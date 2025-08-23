@@ -3,10 +3,10 @@
     data-sidebar-image="none" data-preloader="disable" data-theme="default" data-theme-colors="default">
 <head>
     <meta charset="utf-8" />
-    <title>{{$data['page_title']}} | {{env("APP_NAME")}}</title>
+    <title><?php echo e($data['page_title']); ?> | <?php echo e(env("APP_NAME")); ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Start Include Css -->
-    @include('admin.headers.maincss')
+    <?php echo $__env->make('admin.headers.maincss', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <!-- End Include Css -->
 
     <style>
@@ -31,7 +31,7 @@
     <!-- Begin page -->
     <div id="layout-wrapper">
         <!-- Start Include Header -->
-        @include('admin.headers.header')
+        <?php echo $__env->make('admin.headers.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         <!-- End Include Header -->
         <div class="main-content">
             <div class="page-content">
@@ -41,11 +41,12 @@
                         <div class="col-12">
                             <div
                                 class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                                <h4 class="mb-sm-0">{{$data['page_title']}}</h4>
+                                <h4 class="mb-sm-0"><?php echo e($data['page_title']); ?></h4>
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                                        <li class="breadcrumb-item active">{{$data['page_title']}}
+                                        <li class="breadcrumb-item"><a href="<?php echo e(route('dashboard')); ?>">Home</a></li>
+                                        <li class="breadcrumb-item active"><?php echo e($data['page_title']); ?>
+
                                         </li>
                                     </ol>
                                 </div>
@@ -60,7 +61,7 @@
 
 
 
-                    @include('admin.user.profile-card')
+                    <?php echo $__env->make('admin.user.profile-card', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 
 
@@ -75,7 +76,7 @@
                             <div class="col-xl-3 col-md-6">
                                 <div class="card card-animate">
                                     <div class="card-body">
-                                        <a href="{{route('user.dashboard').'/'.Crypt::encryptString($row->id)}}">
+                                        <a href="<?php echo e(route('user.dashboard').'/'.Crypt::encryptString($row->id)); ?>">
                                             <div class="avatar-sm flex-shrink-0">
                                                 <span class="avatar-title bg-success-subtle rounded fs-3">
                                                     <i class="bx ri-dashboard-fill text-success"></i>
@@ -96,7 +97,7 @@
                             <div class="col-xl-3 col-md-6">
                                 <div class="card card-animate">
                                     <div class="card-body">
-                                        <a href="{{route('user.team').'/'.Crypt::encryptString($row->id)}}">
+                                        <a href="<?php echo e(route('user.team').'/'.Crypt::encryptString($row->id)); ?>">
                                             <div class="avatar-sm flex-shrink-0">
                                                 <span class="avatar-title bg-success-subtle rounded fs-3">
                                                     <i class="bx ri-team-fill text-success"></i>
@@ -114,7 +115,7 @@
                             <div class="col-xl-3 col-md-6">
                                 <div class="card card-animate">
                                     <div class="card-body">
-                                        <a href="{{route('user.reffral').'/'.Crypt::encryptString($row->id)}}">
+                                        <a href="<?php echo e(route('user.reffral').'/'.Crypt::encryptString($row->id)); ?>">
                                             <div class="avatar-sm flex-shrink-0">
                                                 <span class="avatar-title bg-success-subtle rounded fs-3">
                                                     <i class="bx bx-share-alt text-success"></i>
@@ -132,7 +133,7 @@
                             <div class="col-xl-3 col-md-6">
                                 <div class="card card-animate">
                                     <div class="card-body">
-                                        <a href="{{route('user.team-reffral').'/'.Crypt::encryptString($row->id)}}">
+                                        <a href="<?php echo e(route('user.team-reffral').'/'.Crypt::encryptString($row->id)); ?>">
                                             <div class="avatar-sm flex-shrink-0">
                                                 <span class="avatar-title bg-success-subtle rounded fs-3">
                                                     <i class="bx bx-share-alt text-success"></i>
@@ -150,7 +151,7 @@
                             <div class="col-xl-3 col-md-6">
                                 <div class="card card-animate">
                                     <div class="card-body">
-                                        <a href="{{'/?id='.Crypt::encryptString($row->id)}}">
+                                        <a href="<?php echo e('/?id='.Crypt::encryptString($row->id)); ?>">
                                             <div class="avatar-sm flex-shrink-0">
                                                 <span class="avatar-title bg-success-subtle rounded fs-3">
                                                     <i class="bx bx-history text-success"></i>
@@ -173,7 +174,7 @@
                             <div class="col-xl-3 col-md-6">
                                 <div class="card card-animate">
                                     <div class="card-body">
-                                        <a href="{{route('user.edit').'/'.Crypt::encryptString($row->id)}}">
+                                        <a href="<?php echo e(route('user.edit').'/'.Crypt::encryptString($row->id)); ?>">
                                             <div class="avatar-sm flex-shrink-0">
                                                 <span class="avatar-title bg-success-subtle rounded fs-3">
                                                     <i class="bx bx-edit text-success"></i>
@@ -193,7 +194,7 @@
                             <div class="col-xl-3 col-md-6">
                                 <div class="card card-animate">
                                     <div class="card-body">
-                                        <a href="{{'/'.Crypt::encryptString($row->id)}}">
+                                        <a href="<?php echo e('/'.Crypt::encryptString($row->id)); ?>">
                                             <div class="avatar-sm flex-shrink-0">
                                                 <span class="avatar-title bg-success-subtle rounded fs-3">
                                                     <i class="bx ri-bank-fill text-success"></i>
@@ -213,7 +214,7 @@
                             <div class="col-xl-3 col-md-6">
                                 <div class="card card-animate">
                                     <div class="card-body">
-                                        <a href="{{route('user.change-password').'/'.Crypt::encryptString($row->id)}}">
+                                        <a href="<?php echo e(route('user.change-password').'/'.Crypt::encryptString($row->id)); ?>">
                                             <div class="avatar-sm flex-shrink-0">
                                                 <span class="avatar-title bg-success-subtle rounded fs-3">
                                                     <i class="bx bx-hide text-success"></i>
@@ -234,7 +235,7 @@
                             <div class="col-xl-3 col-md-6">
                                 <div class="card card-animate">
                                     <div class="card-body">
-                                        <a href="{{route('user.change-sponser').'/'.Crypt::encryptString($row->id)}}">
+                                        <a href="<?php echo e(route('user.change-sponser').'/'.Crypt::encryptString($row->id)); ?>">
                                             <div class="avatar-sm flex-shrink-0">
                                                 <span class="avatar-title bg-success-subtle rounded fs-3">
                                                     <i class="bx bx-abacus text-success"></i>
@@ -254,7 +255,7 @@
                             <div class="col-xl-3 col-md-6 hide">
                                 <div class="card card-animate">
                                     <div class="card-body">
-                                        <a href="{{route('user.activate-with-income').'/'.Crypt::encryptString($row->id)}}">
+                                        <a href="<?php echo e(route('user.activate-with-income').'/'.Crypt::encryptString($row->id)); ?>">
                                             <div class="avatar-sm flex-shrink-0">
                                                 <span class="avatar-title bg-success-subtle rounded fs-3">
                                                     <i class="bx ri-account-box-fill text-success"></i>
@@ -324,7 +325,7 @@
             </div>
             <!-- End Page-content -->
             <!-- Start Include Footer -->
-            @include('admin.headers.footer')
+            <?php echo $__env->make('admin.headers.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             <!-- End Include Footer -->
         </div>
     </div>
@@ -335,7 +336,7 @@
 
 
     <!-- Start Include Script -->
-    @include('admin.headers.mainjs')
+    <?php echo $__env->make('admin.headers.mainjs', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <!-- End Include Script -->
 
     <!-- leaderboard_show_hide -->
@@ -345,9 +346,9 @@
         $(document).on("click", "#send_password",(function(e) {
           loader("show");
             var form = new FormData();
-            form.append("user_id","{{Crypt::encryptString($row->id)}}");
+            form.append("user_id","<?php echo e(Crypt::encryptString($row->id)); ?>");
             var settings = {
-              "url": "{{$data['back_btn']}}/send_password",
+              "url": "<?php echo e($data['back_btn']); ?>/send_password",
               "method": "POST",
               "timeout": 0,
               "processData": false,
@@ -367,9 +368,9 @@
         $(document).on("click", ".block_unblock",(function(e) {
           loader("show");
             var form = new FormData();
-            form.append("user_id","{{Crypt::encryptString($row->id)}}");
+            form.append("user_id","<?php echo e(Crypt::encryptString($row->id)); ?>");
             var settings = {
-              "url": "{{$data['back_btn']}}/block_unblock",
+              "url": "<?php echo e($data['back_btn']); ?>/block_unblock",
               "method": "POST",
               "timeout": 0,
               "processData": false,
@@ -392,7 +393,7 @@
             });
        }));
 
-        var status = "{{$row->status}}";
+        var status = "<?php echo e($row->status); ?>";
         $(".block-button, .unblock-button").hide();
         if(status==1) $(".block-button").show();
         else $(".unblock-button").show();
@@ -408,4 +409,4 @@
 
 
 </body>
-</html>
+</html><?php /**PATH C:\xamp\htdocs\projects\ratsoftware\resources\views/admin/user/account-view.blade.php ENDPATH**/ ?>

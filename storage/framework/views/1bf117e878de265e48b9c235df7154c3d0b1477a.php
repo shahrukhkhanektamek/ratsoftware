@@ -185,39 +185,4 @@
 
 
 
-
-<div class="modal fade" id="depositAlertModal" tabindex="-1" aria-labelledby="depositAlertLabel" aria-hidden="true" >
-  <div class="modal-dialog">
-    <div class="modal-content text-center">
-      <div class="modal-header">
-        <h5 class="modal-title w-100 text-center" id="depositAlertLabel">Deposit Alert</h5>
-        <button type="button" onclick="closeModal('#depositAlertModal')" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        You have new diposit request!
-      </div>
-      <div class="modal-footer">
-        <a href="<?php echo e(route('deposit.list')); ?>" class="btn btn-primary" style="margin: 0 auto;">Check Deposit</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<div class="modal fade" id="supportAlertModal" tabindex="-1" aria-labelledby="depositAlertLabel" aria-hidden="true" >
-  <div class="modal-dialog">
-    <div class="modal-content text-center">
-      <div class="modal-header">
-        <h5 class="modal-title w-100 text-center" id="depositAlertLabel">Support Alert</h5>
-        <button type="button" onclick="closeModal('#supportAlertModal')" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        You have new ticket request!
-      </div>
-      <div class="modal-footer">
-        <a href="<?php echo e(route('support.list')); ?>" class="btn btn-primary" style="margin: 0 auto;">Check Ticket</a>
-      </div>
-    </div>
-  </div>
-</div>
 <?php /**PATH C:\xamp\htdocs\projects\ratsoftware\resources\views/admin/headers/footer.blade.php ENDPATH**/ ?>

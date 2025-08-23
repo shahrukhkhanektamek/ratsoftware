@@ -3,17 +3,17 @@
     data-sidebar-image="none" data-preloader="disable" data-theme="default" data-theme-colors="default">
 <head>
     <meta charset="utf-8" />
-    <title>{{$data['page_title']}} | {{env("APP_NAME")}}</title>
+    <title><?php echo e($data['page_title']); ?> | <?php echo e(env("APP_NAME")); ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Start Include Css -->
-    @include('admin.headers.maincss')
+    <?php echo $__env->make('admin.headers.maincss', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <!-- End Include Css -->
 </head>
 <body>
     <!-- Begin page -->
     <div id="layout-wrapper">
         <!-- Start Include Header -->
-        @include('admin.headers.header')
+        <?php echo $__env->make('admin.headers.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         <!-- End Include Header -->
         <div class="main-content">
             <div class="page-content">
@@ -23,24 +23,25 @@
                         <div class="col-12">
                             <div
                                 class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                                <h4 class="mb-sm-0">{{$data['page_title']}}</h4>
+                                <h4 class="mb-sm-0"><?php echo e($data['page_title']); ?></h4>
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                                        <li class="breadcrumb-item active">{{$data['page_title']}}
+                                        <li class="breadcrumb-item"><a href="<?php echo e(route('dashboard')); ?>">Home</a></li>
+                                        <li class="breadcrumb-item active"><?php echo e($data['page_title']); ?>
+
                                         </li>
                                     </ol>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    @if(!empty($row))
-                        @include('admin.user.profile-card')
-                    @endif
+                    <?php if(!empty($row)): ?>
+                        <?php echo $__env->make('admin.user.profile-card', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                    <?php endif; ?>
                     <!-- end page title -->
-                    <form class="mt-2 needs-validation form_data" action="{{$data['submit_url']}}" method="post" enctype="multipart/form-data" id="form_data_submit" novalidate>
-                        @csrf
-                        <input type="hidden" name="id" value="{{Crypt::encryptString(@$row->id)}}">
+                    <form class="mt-2 needs-validation form_data" action="<?php echo e($data['submit_url']); ?>" method="post" enctype="multipart/form-data" id="form_data_submit" novalidate>
+                        <?php echo csrf_field(); ?>
+                        <input type="hidden" name="id" value="<?php echo e(Crypt::encryptString(@$row->id)); ?>">
                         <div class="row">
                             <div class="col-lg-6" style="margin:0 auto;">
                                 <div class="card">
@@ -53,18 +54,18 @@
 
                                             <div class="col-lg-6">
                                                 <label class="form-label" for="product-title-input">First Name</label>
-                                                <input type="text" class="form-control" placeholder="Enter First Name" name="name" value="{{@explode(' ', $row->name)[0]}}" required>
+                                                <input type="text" class="form-control" placeholder="Enter First Name" name="name" value="<?php echo e(@explode(' ', $row->name)[0]); ?>" required>
                                             </div>
 
                                             <div class="col-lg-6">
                                                 <label class="form-label" for="product-title-input">Last Name</label>
-                                                <input type="text" class="form-control" placeholder="Enter Last Name" name="lname" value="{{@explode(' ', $row->name)[1]}}">
+                                                <input type="text" class="form-control" placeholder="Enter Last Name" name="lname" value="<?php echo e(@explode(' ', $row->name)[1]); ?>">
                                             </div>
 
 
                                             <div class="col-lg-12">
                                                 <label class="form-label" for="product-title-input">Email</label>
-                                                <input type="text" class="form-control" placeholder="Enter Email" name="email" value="{{@$row->email}}" >
+                                                <input type="text" class="form-control" placeholder="Enter Email" name="email" value="<?php echo e(@$row->email); ?>" >
                                             </div>
 
                                             <div class="col-lg-4">
@@ -72,17 +73,17 @@
                                                     <label for="formFile" class="form-label">Select Country</label>
                                                     <select class="form-select mb-3" aria-label="Default select example" name="country" required>
                                                         <option value=""  >Select</option>
-                                                        @php($countries = DB::table('countries')->get())
-                                                        @foreach($countries as $key => $value)
-                                                            <option value="{{$value->id}}" @if(@$row->country==$value->id)selected @endif >{{$value->name}} (+{{$value->phonecode}})</option>
-                                                        @endforeach
+                                                        <?php ($countries = DB::table('countries')->get()); ?>
+                                                        <?php $__currentLoopData = $countries; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                            <option value="<?php echo e($value->id); ?>" <?php if(@$row->country==$value->id): ?>selected <?php endif; ?> ><?php echo e($value->name); ?> (+<?php echo e($value->phonecode); ?>)</option>
+                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                     </select>
                                                 </div>
                                             </div>
                                             
                                             <div class="col-lg-8">
                                                 <label class="form-label" for="product-title-input">Phone </label>
-                                                <input type="number" class="form-control" placeholder="Enter Phone" name="phone" value="{{@$row->phone}}" >
+                                                <input type="number" class="form-control" placeholder="Enter Phone" name="phone" value="<?php echo e(@$row->phone); ?>" >
                                             </div>
 
                                             <div class="col-lg-6">
@@ -90,30 +91,30 @@
 
                                                 <select class="form-select mb-3" aria-label="Default select example" name="state" required>
                                                   <option value=""  >Select</option>
-                                                  @php($states = DB::table('states')->get())
-                                                  @foreach($states as $key => $value)
-                                                      <option value="{{$value->id}}" @if(@$row->state==$value->id) selected @endif >{{$value->name}}</option>
-                                                  @endforeach
+                                                  <?php ($states = DB::table('states')->get()); ?>
+                                                  <?php $__currentLoopData = $states; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                      <option value="<?php echo e($value->id); ?>" <?php if(@$row->state==$value->id): ?> selected <?php endif; ?> ><?php echo e($value->name); ?></option>
+                                                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                               </select>
                                             </div>
                                             
                                             <div class="col-lg-6">
                                                 <label class="form-label" for="product-title-input">City </label>
-                                                <input type="text" class="form-control" placeholder="Enter City" name="city" value="{{@$row->city}}" >
+                                                <input type="text" class="form-control" placeholder="Enter City" name="city" value="<?php echo e(@$row->city); ?>" >
                                             </div>                                            
                                             
                                             
                                             <div class="col-lg-12">
                                                 <label class="form-label" for="product-title-input">Address </label>
-                                                <input type="text" class="form-control" placeholder="Enter Address" name="address" value="{{@$row->address}}" >
+                                                <input type="text" class="form-control" placeholder="Enter Address" name="address" value="<?php echo e(@$row->address); ?>" >
                                             </div>
 
-                                            @if(empty($row))
+                                            <?php if(empty($row)): ?>
                                             <div class="col-lg-12">
                                                 <label class="form-label" for="product-title-input">Password </label>
-                                                <input type="text" class="form-control" placeholder="Enter Password" name="password" value="{{@$row->password}}" >
+                                                <input type="text" class="form-control" placeholder="Enter Password" name="password" value="<?php echo e(@$row->password); ?>" >
                                             </div>        
-                                            @endif                                   
+                                            <?php endif; ?>                                   
                                             
                                             <div class="col-lg-6 hide">
                                                 <label for="formFile" class="form-label">Action</label>
@@ -138,13 +139,13 @@
             </div>
             <!-- End Page-content -->
             <!-- Start Include Footer -->
-            @include('admin.headers.footer')
+            <?php echo $__env->make('admin.headers.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             <!-- End Include Footer -->
         </div>
     </div>
     <!-- END layout-wrapper -->
     <!-- Start Include Script -->
-    @include('admin.headers.mainjs')
+    <?php echo $__env->make('admin.headers.mainjs', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <!-- End Include Script -->
 
 
@@ -170,7 +171,7 @@
         form.append("package_id", package_id);
         form.append("placement", placement);
         var settings = {
-          "url": "{{url('check-sponser')}}",
+          "url": "<?php echo e(url('check-sponser')); ?>",
           "method": "POST",
           "processData": false,
           "mimeType": "multipart/form-data",
@@ -229,4 +230,4 @@
 
 
 </body>
-</html>
+</html><?php /**PATH C:\xamp\htdocs\projects\ratsoftware\resources\views/admin/user/form.blade.php ENDPATH**/ ?>

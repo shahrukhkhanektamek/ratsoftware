@@ -4,10 +4,10 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>{{$data['page_title']}} | {{env("APP_NAME")}}</title>
+    <title><?php echo e($data['page_title']); ?> | <?php echo e(env("APP_NAME")); ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Start Include Css -->
-   @include('admin.headers.maincss')
+   <?php echo $__env->make('admin.headers.maincss', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <!-- End Include Css -->
 </head>
 
@@ -15,7 +15,7 @@
     <!-- Begin page -->
     <div id="layout-wrapper">
         <!-- Start Include Header -->
-       @include('admin.headers.header')        <!-- End Include Header -->
+       <?php echo $__env->make('admin.headers.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>        <!-- End Include Header -->
         <div class="main-content">
             <div class="page-content">
                 <div class="container-fluid">
@@ -24,11 +24,11 @@
                         <div class="col-12">
                             <div
                                 class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                                <h4 class="mb-sm-0">{{$data['page_title']}}</h4>
+                                <h4 class="mb-sm-0"><?php echo e($data['page_title']); ?></h4>
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                                        <li class="breadcrumb-item active">{{$data['page_title']}}</li>
+                                        <li class="breadcrumb-item"><a href="<?php echo e(route('dashboard')); ?>">Home</a></li>
+                                        <li class="breadcrumb-item active"><?php echo e($data['page_title']); ?></li>
                                     </ol>
                                 </div>
                             </div>
@@ -47,7 +47,7 @@
                                             
                                         </div>
                                         <div class="col-md-2">
-                                            <a href="{{$data['add_btn_url']}}" class="btn btn-primary add-btn w-100" id="create-btn"><i class="ri-add-line align-bottom me-1"></i> Add New</a>
+                                            <a href="<?php echo e($data['add_btn_url']); ?>" class="btn btn-primary add-btn w-100" id="create-btn"><i class="ri-add-line align-bottom me-1"></i> Add New</a>
                                         </div>
                                         <div class="col-md-2">
                                             <button type="button" class="btn btn-success" id="excel-export">Excel</button>
@@ -132,7 +132,7 @@
                                         </div>                                             
                                          
                                          <div class="col-md-3 mt-1">
-                                            <button href="{{$data['back_btn']}}" class="btn btn-dark search w-100"><i class="ri-search-line align-bottom me-1"></i> Search</button>
+                                            <button href="<?php echo e($data['back_btn']); ?>" class="btn btn-dark search w-100"><i class="ri-search-line align-bottom me-1"></i> Search</button>
                                          </div>
                                     </div>
                                 </div>
@@ -155,7 +155,7 @@
             </div>
             <!-- End Page-content -->
             <!-- Start Include Footer -->
-           @include('admin.headers.footer')
+           <?php echo $__env->make('admin.headers.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             <!-- End Include Footer -->
         </div>
         <!-- end main content-->
@@ -163,13 +163,13 @@
     <!-- END layout-wrapper -->
 
     <!-- Start Include Script -->
-   @include('admin.headers.mainjs')
+   <?php echo $__env->make('admin.headers.mainjs', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <!-- End Include Script -->
 
 
 <script>
    var data = '';
-   var main_url = "{{$data['back_btn']}}/load_data";
+   var main_url = "<?php echo e($data['back_btn']); ?>/load_data";
 
    function get_url_data()
    {
@@ -241,7 +241,7 @@
         loader("show");
         var form = new FormData();
         var settings = {
-          "url": "{{$data['excel_export']}}?"+data,
+          "url": "<?php echo e($data['excel_export']); ?>?"+data,
           "method": "GET",
           "timeout": 0,
           "processData": false,
@@ -271,4 +271,4 @@
 
 </body>
 
-</html>
+</html><?php /**PATH C:\xamp\htdocs\projects\ratsoftware\resources\views/admin/user/index.blade.php ENDPATH**/ ?>

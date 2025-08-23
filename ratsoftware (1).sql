@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 21, 2025 at 03:03 PM
+-- Generation Time: Aug 23, 2025 at 03:00 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -2087,6 +2087,50 @@ INSERT INTO `income_plan` (`id`, `income1`, `income2`, `income3`, `income4`, `in
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `item`
+--
+
+CREATE TABLE `item` (
+  `id` int(11) NOT NULL,
+  `image` text DEFAULT NULL,
+  `slug` text DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `name` varchar(500) DEFAULT NULL,
+  `add_by` int(11) DEFAULT NULL,
+  `add_date_time` datetime DEFAULT NULL,
+  `update_date_time` datetime DEFAULT NULL,
+  `update_history` text DEFAULT NULL,
+  `is_delete` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `item`
+--
+
+INSERT INTO `item` (`id`, `image`, `slug`, `status`, `name`, `add_by`, `add_date_time`, `update_date_time`, `update_history`, `is_delete`) VALUES
+(193184, '2025-08-23-68a9bb19386b9.webp', 'kaya-trim-fat-cutter-tab', 1, 'KAYA TRIM FAT CUTTER TAB', 6, '2025-04-23 15:31:05', '2025-08-23 18:29:05', NULL, 0),
+(193185, '2025-07-11-6870ea39e94c1.webp', 'go-madhu-care-syp', 1, 'Go MADHU CARE SYP', 6, '2025-04-23 15:33:06', '2025-07-11 16:11:01', NULL, 0),
+(193186, '2025-07-11-6870e596515ff.webp', 'kaya-trim-ras', 1, 'KAYA TRIM RAS', 6, '2025-04-23 15:36:32', '2025-07-11 15:51:10', NULL, 0),
+(193187, '2025-06-25-685ba24a8cfd1.png', 'rama-booti-tab', 1, 'RAMA BOOTI TAB', 6, '2025-04-23 15:39:25', '2025-07-31 17:34:19', NULL, 0),
+(193188, '2025-04-23-6808bd09aa634.png', 'heart-mantra-tab', 1, 'HEART MANTRA TAB', 6, '2025-04-23 15:42:25', '2025-04-23 15:42:25', NULL, 0),
+(193189, '2025-04-23-6808bd84e8423.png', 'stone-out-syp-cap', 1, 'STONE OUT SYP & CAP', 6, '2025-04-23 15:44:28', '2025-07-03 18:07:02', NULL, 0),
+(193190, '2025-04-23-6808bdf93815a.png', 'shilajit', 1, 'SHILAJIT', 6, '2025-04-23 15:46:25', '2025-07-31 17:35:35', NULL, 0),
+(193191, '2025-04-23-6808be476704c.png', 'aar-paar', 1, 'AAR PAAR', 6, '2025-04-23 15:47:43', '2025-07-31 17:37:08', NULL, 0),
+(193192, '2025-04-23-6808be936ea89.png', 'chaywanprash', 1, 'CHAYWANPRASH', 6, '2025-04-23 15:48:59', '2025-07-31 17:37:42', NULL, 0),
+(193194, '2025-04-23-6808bf1751b53.png', 'kumkumadi-tailam', 1, 'KUMKUMADI TAILAM', 6, '2025-04-23 15:51:11', '2025-07-31 17:38:43', NULL, 0),
+(193195, '2025-04-23-6808bf6e46e50.png', 'kaya-gain-syp', 1, 'KAYA GAIN SYP', 6, '2025-04-23 15:52:38', '2025-07-03 17:59:56', NULL, 0),
+(193196, '2025-04-23-6808bfb913a5a.png', 'stree-kaya', 1, 'STREE KAYA', 6, '2025-04-23 15:53:53', '2025-04-23 15:53:53', NULL, 0),
+(193197, '2025-04-23-6808c0061a4a1.png', 'vitamin-c-seraum', 1, 'VITAMIN C SERAUM', 6, '2025-04-23 15:55:10', '2025-07-31 17:40:24', NULL, 0),
+(193198, '2025-04-23-6808c059d244c.png', 'hair-wellness-tab', 1, 'HAIR WELLNESS TAB', 6, '2025-04-23 15:56:33', '2025-04-23 15:56:33', NULL, 0),
+(193199, '2025-04-23-6808c0a757deb.png', 'rosemary-hair-oil', 1, 'ROSEMARY HAIR OIL', 6, '2025-04-23 15:57:51', '2025-07-31 17:41:08', NULL, 0),
+(193200, '2025-04-23-6808c0e52a5b0.png', 'mahabhringraj-hair-oil', 1, 'MAHABHRINGRAJ HAIR OIL', 6, '2025-04-23 15:58:53', '2025-07-31 17:41:57', NULL, 0),
+(193201, '2025-06-25-685b9e78540f5.png', 'glutathione-tab', 1, 'GLUTATHIONE TAB', 6, '2025-04-23 15:59:39', '2025-07-31 17:42:40', NULL, 0),
+(193202, '2025-07-11-6870eab07cd45.webp', 'sea-buckthorn', 1, 'SEA BUCKTHORN JUICE', 6, '2025-07-11 16:13:00', '2025-07-11 16:26:21', NULL, 0),
+(193203, '2025-07-11-6870ed416d0df.webp', 'liver-detox', 1, 'LIVER DETOX TABLETS', 6, '2025-07-11 16:23:53', '2025-07-27 17:33:20', NULL, 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `kyc`
 --
 
@@ -3483,7 +3527,8 @@ INSERT INTO `login_history` (`id`, `user_id`, `role`, `ip_address`, `date`, `tim
 (1243, '429', 2, '122.161.48.88', '2025-08-21', '15:12:44', '', NULL, '', NULL, 1, 'f4a4da9aa7eadfd23c7bdb7cf57b3112'),
 (1244, '234', 2, '122.161.48.88', '2025-08-21', '15:14:30', '', NULL, '', NULL, 1, '47810f956e3d8fb8a32fb276448b464d'),
 (1245, '6', 1, '122.161.48.88', '2025-08-21', '16:41:27', '74fded6329ea667c', NULL, 'WlhsS01XTXlWbmxZTW14clNXcHZhVTVwU1hOSmJrSm9Zek5PTTJJelNtdEphbTlwV2xSRmQxbFhVbXBOZW1zd1QxZEthRTVVYkdoWmJVcHNUbFJhYkUxRVZUTmFha2wzV21wbk5FMHlWV2xNUTBwcldWaFNiRmd6VW5CaVYxVnBUMmxKZVUxRVNURk1WRUUwVEZSSmVFbEVSVEpQYWxGNFQycEpNMGxwZDJsamJUbHpXbE5KTmtscVJXbE1RMHByV2xoYWNGa3lWbVpoVjFGcFQybEpNMDVIV210YVYxRXlUWHBKTlZwWFJUSk9hbVJxU1c0d1BRPT0=', NULL, 1, 'e10adc3949ba59abbe56e057f20f883e'),
-(1246, '6', 1, '::1', '2025-08-21', '18:20:43', '', NULL, '', NULL, 1, 'e10adc3949ba59abbe56e057f20f883e');
+(1246, '6', 1, '::1', '2025-08-21', '18:20:43', '', NULL, '', NULL, 1, 'e10adc3949ba59abbe56e057f20f883e'),
+(1247, '6', 1, '::1', '2025-08-23', '16:59:19', '', NULL, '', NULL, 1, 'e10adc3949ba59abbe56e057f20f883e');
 
 -- --------------------------------------------------------
 
@@ -5613,6 +5658,12 @@ ALTER TABLE `income_plan`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `item`
+--
+ALTER TABLE `item`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `kyc`
 --
 ALTER TABLE `kyc`
@@ -5852,6 +5903,12 @@ ALTER TABLE `income_plan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=193165;
 
 --
+-- AUTO_INCREMENT for table `item`
+--
+ALTER TABLE `item`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=193204;
+
+--
 -- AUTO_INCREMENT for table `kyc`
 --
 ALTER TABLE `kyc`
@@ -5867,7 +5924,7 @@ ALTER TABLE `kyc_option`
 -- AUTO_INCREMENT for table `login_history`
 --
 ALTER TABLE `login_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1247;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1248;
 
 --
 -- AUTO_INCREMENT for table `member_log`
