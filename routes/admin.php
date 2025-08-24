@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UserController;
 
 use App\Http\Controllers\Admin\ItemController;
+use App\Http\Controllers\Admin\CategoryController;
 
 use App\Http\Controllers\Admin\SettingController;
 
@@ -93,6 +94,17 @@ Route::group(['middleware' => ['admin']], function () {
         Route::post('delete/{id?}', [ItemController::class, 'delete'])->name('delete');
         Route::get('excel_import', [ItemController::class, 'excel_import'])->name('excel_import');
         Route::post('excel_import_action', [ItemController::class, 'excel_import_action'])->name('excel_import_action');
+    });
+
+    Route::group(['prefix'=>'category', 'as'=>'category.'], function(){
+        Route::get('/', [CategoryController::class, 'index'])->name('list');
+        Route::get('load_data', [CategoryController::class, 'load_data'])->name('load_data');
+        Route::get('add', [CategoryController::class, 'add'])->name('add');
+        Route::get('edit/{id?}', [CategoryController::class, 'edit'])->name('edit');
+        Route::post('update', [CategoryController::class, 'update'])->name('update');
+        Route::post('delete/{id?}', [CategoryController::class, 'delete'])->name('delete');
+        Route::get('excel_import', [CategoryController::class, 'excel_import'])->name('excel_import');
+        Route::post('excel_import_action', [CategoryController::class, 'excel_import_action'])->name('excel_import_action');
     });
 
 

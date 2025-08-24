@@ -162,8 +162,8 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="{{route('item.list')}}">
-                                <i class="ri-file-user-line"></i> <span data-key="t-dashboards">Work Type Master</span>
+                            <a class="nav-link menu-link" href="{{route('category.list')}}">
+                                <i class="ri-file-user-line"></i> <span data-key="t-dashboards">Work Category</span>
                             </a>
                         </li>
 

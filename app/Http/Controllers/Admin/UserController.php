@@ -251,36 +251,52 @@ class UserController extends Controller
         $add_by = $session['id'];        
 
         $email = $request->email;
+        $username = $request->username;
         $phone = $request->phone;
         $name = $request->name.' '.$request->lname;
 
-        // $check_exist_email = DB::table('users')
-        // ->where('email',$email)
-        // ->whereNotIn('id', [$id])
-        // ->first();
-        // if(!empty($check_exist_email))
-        // {
-        //     $responseCode = 400;
-        //     $result['status'] = $responseCode;
-        //     $result['message'] = 'Email already use!';
-        //     $result['action'] = 'add';
-        //     $result['data'] = [];
-        //     return response()->json($result, $responseCode);
-        // }
 
-        // $check_exist_phone = DB::table('users')
-        // ->where('phone',$phone)
-        // ->whereNotIn('id', [$id])
-        // ->first();
-        // if(!empty($check_exist_phone))
-        // {
-        //     $responseCode = 400;
-        //     $result['status'] = $responseCode;
-        //     $result['message'] = 'Phone already use!';
-        //     $result['action'] = 'add';
-        //     $result['data'] = [];
-        //     return response()->json($result, $responseCode);
-        // }
+        $check_exist_username = DB::table('users')
+        ->where('username',$username)
+        ->whereNotIn('id', [$id])
+        ->first();
+        if(!empty($check_exist_username))
+        {
+            $responseCode = 400;
+            $result['status'] = $responseCode;
+            $result['message'] = 'Username already use!';
+            $result['action'] = 'add';
+            $result['data'] = [];
+            return response()->json($result, $responseCode);
+        }
+
+        $check_exist_email = DB::table('users')
+        ->where('email',$email)
+        ->whereNotIn('id', [$id])
+        ->first();
+        if(!empty($check_exist_email))
+        {
+            $responseCode = 400;
+            $result['status'] = $responseCode;
+            $result['message'] = 'Email already use!';
+            $result['action'] = 'add';
+            $result['data'] = [];
+            return response()->json($result, $responseCode);
+        }
+
+        $check_exist_phone = DB::table('users')
+        ->where('phone',$phone)
+        ->whereNotIn('id', [$id])
+        ->first();
+        if(!empty($check_exist_phone))
+        {
+            $responseCode = 400;
+            $result['status'] = $responseCode;
+            $result['message'] = 'Phone already use!';
+            $result['action'] = 'add';
+            $result['data'] = [];
+            return response()->json($result, $responseCode);
+        }
 
         
         $data->email = $request->email;
@@ -289,6 +305,7 @@ class UserController extends Controller
         $data->city = $request->city;
         $data->state = $request->state;
         $data->phone = $request->phone;
+        $data->conatct_person_phone = $request->conatct_person_phone;
         $data->country = $request->country;
         $data->status = $request->status;
         
