@@ -68,7 +68,7 @@
                                             </div>
                                             
 
-                                            <div class="col-lg-12 hide">
+                                            <div class="col-lg-12 hide"> 
                                                 <label for="formFile" class="form-label b-block">Image</label>
                                                 <label class="d-block">
                                                     <input class="form-control upload-single-image" type="file" name="image" data-target="image">
