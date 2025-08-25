@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 24, 2025 at 10:14 PM
+-- Generation Time: Aug 25, 2025 at 09:01 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -144,50 +144,6 @@ INSERT INTO `cart` (`id`, `product_id`, `product_name`, `user_id`, `qty`, `price
 (491, 193199, 'ROSEMARY HAIR OIL', 359, 1, 649, '2025-08-17 20:07:17', 1, 359, '2025-08-17 20:07:17', NULL, NULL, 0),
 (492, 193198, 'HAIR WELLNESS TAB', 359, 1, 1199, '2025-08-17 20:07:22', 1, 359, '2025-08-17 20:07:22', NULL, NULL, 0),
 (494, 193201, 'GLUTATHIONE TAB', 359, 1, 899, '2025-08-19 17:44:29', 1, 359, '2025-08-19 17:44:29', NULL, NULL, 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `category`
---
-
-CREATE TABLE `category` (
-  `id` int(11) NOT NULL,
-  `image` text DEFAULT NULL,
-  `slug` text DEFAULT NULL,
-  `status` int(11) DEFAULT NULL,
-  `name` varchar(500) DEFAULT NULL,
-  `add_by` int(11) DEFAULT NULL,
-  `add_date_time` datetime DEFAULT NULL,
-  `update_date_time` datetime DEFAULT NULL,
-  `update_history` text DEFAULT NULL,
-  `is_delete` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `category`
---
-
-INSERT INTO `category` (`id`, `image`, `slug`, `status`, `name`, `add_by`, `add_date_time`, `update_date_time`, `update_history`, `is_delete`) VALUES
-(193184, '2025-08-23-68a9bb19386b9.webp', 'kaya-trim-fat-cutter-tab', 1, 'KAYA TRIM FAT CUTTER TAB', 6, '2025-04-23 15:31:05', '2025-08-23 18:29:05', NULL, 0),
-(193185, '2025-07-11-6870ea39e94c1.webp', 'go-madhu-care-syp', 1, 'Go MADHU CARE SYP', 6, '2025-04-23 15:33:06', '2025-07-11 16:11:01', NULL, 0),
-(193186, '2025-07-11-6870e596515ff.webp', 'kaya-trim-ras', 1, 'KAYA TRIM RAS', 6, '2025-04-23 15:36:32', '2025-07-11 15:51:10', NULL, 0),
-(193187, '2025-06-25-685ba24a8cfd1.png', 'rama-booti-tab', 1, 'RAMA BOOTI TAB', 6, '2025-04-23 15:39:25', '2025-07-31 17:34:19', NULL, 0),
-(193188, '2025-04-23-6808bd09aa634.png', 'heart-mantra-tab', 1, 'HEART MANTRA TAB', 6, '2025-04-23 15:42:25', '2025-04-23 15:42:25', NULL, 0),
-(193189, '2025-04-23-6808bd84e8423.png', 'stone-out-syp-cap', 1, 'STONE OUT SYP & CAP', 6, '2025-04-23 15:44:28', '2025-07-03 18:07:02', NULL, 0),
-(193190, '2025-04-23-6808bdf93815a.png', 'shilajit', 1, 'SHILAJIT', 6, '2025-04-23 15:46:25', '2025-07-31 17:35:35', NULL, 0),
-(193191, '2025-04-23-6808be476704c.png', 'aar-paar', 1, 'AAR PAAR', 6, '2025-04-23 15:47:43', '2025-07-31 17:37:08', NULL, 0),
-(193192, '2025-04-23-6808be936ea89.png', 'chaywanprash', 1, 'CHAYWANPRASH', 6, '2025-04-23 15:48:59', '2025-07-31 17:37:42', NULL, 0),
-(193194, '2025-04-23-6808bf1751b53.png', 'kumkumadi-tailam', 1, 'KUMKUMADI TAILAM', 6, '2025-04-23 15:51:11', '2025-07-31 17:38:43', NULL, 0),
-(193195, '2025-04-23-6808bf6e46e50.png', 'kaya-gain-syp', 1, 'KAYA GAIN SYP', 6, '2025-04-23 15:52:38', '2025-07-03 17:59:56', NULL, 0),
-(193196, '2025-04-23-6808bfb913a5a.png', 'stree-kaya', 1, 'STREE KAYA', 6, '2025-04-23 15:53:53', '2025-04-23 15:53:53', NULL, 0),
-(193197, '2025-04-23-6808c0061a4a1.png', 'vitamin-c-seraum', 1, 'VITAMIN C SERAUM', 6, '2025-04-23 15:55:10', '2025-07-31 17:40:24', NULL, 0),
-(193198, '2025-04-23-6808c059d244c.png', 'hair-wellness-tab', 1, 'HAIR WELLNESS TAB', 6, '2025-04-23 15:56:33', '2025-04-23 15:56:33', NULL, 0),
-(193199, '2025-04-23-6808c0a757deb.png', 'rosemary-hair-oil', 1, 'ROSEMARY HAIR OIL', 6, '2025-04-23 15:57:51', '2025-07-31 17:41:08', NULL, 0),
-(193200, '2025-04-23-6808c0e52a5b0.png', 'mahabhringraj-hair-oil', 1, 'MAHABHRINGRAJ HAIR OIL', 6, '2025-04-23 15:58:53', '2025-07-31 17:41:57', NULL, 0),
-(193201, '2025-06-25-685b9e78540f5.png', 'glutathione-tab', 1, 'GLUTATHIONE TAB', 6, '2025-04-23 15:59:39', '2025-07-31 17:42:40', NULL, 0),
-(193202, '2025-07-11-6870eab07cd45.webp', 'sea-buckthorn', 1, 'SEA BUCKTHORN JUICE', 6, '2025-07-11 16:13:00', '2025-07-11 16:26:21', NULL, 0),
-(193203, '2025-07-11-6870ed416d0df.webp', 'liver-detox', 1, 'LIVER DETOX TABLETS', 6, '2025-07-11 16:23:53', '2025-07-27 17:33:20', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -2152,25 +2108,12 @@ CREATE TABLE `item` (
 --
 
 INSERT INTO `item` (`id`, `image`, `slug`, `status`, `name`, `add_by`, `add_date_time`, `update_date_time`, `update_history`, `is_delete`) VALUES
-(193184, '2025-08-23-68a9bb19386b9.webp', 'kaya-trim-fat-cutter-tab', 1, 'KAYA TRIM FAT CUTTER TAB', 6, '2025-04-23 15:31:05', '2025-08-23 18:29:05', NULL, 0),
-(193185, '2025-07-11-6870ea39e94c1.webp', 'go-madhu-care-syp', 1, 'Go MADHU CARE SYP', 6, '2025-04-23 15:33:06', '2025-07-11 16:11:01', NULL, 0),
-(193186, '2025-07-11-6870e596515ff.webp', 'kaya-trim-ras', 1, 'KAYA TRIM RAS', 6, '2025-04-23 15:36:32', '2025-07-11 15:51:10', NULL, 0),
-(193187, '2025-06-25-685ba24a8cfd1.png', 'rama-booti-tab', 1, 'RAMA BOOTI TAB', 6, '2025-04-23 15:39:25', '2025-07-31 17:34:19', NULL, 0),
-(193188, '2025-04-23-6808bd09aa634.png', 'heart-mantra-tab', 1, 'HEART MANTRA TAB', 6, '2025-04-23 15:42:25', '2025-04-23 15:42:25', NULL, 0),
-(193189, '2025-04-23-6808bd84e8423.png', 'stone-out-syp-cap', 1, 'STONE OUT SYP & CAP', 6, '2025-04-23 15:44:28', '2025-07-03 18:07:02', NULL, 0),
-(193190, '2025-04-23-6808bdf93815a.png', 'shilajit', 1, 'SHILAJIT', 6, '2025-04-23 15:46:25', '2025-07-31 17:35:35', NULL, 0),
-(193191, '2025-04-23-6808be476704c.png', 'aar-paar', 1, 'AAR PAAR', 6, '2025-04-23 15:47:43', '2025-07-31 17:37:08', NULL, 0),
-(193192, '2025-04-23-6808be936ea89.png', 'chaywanprash', 1, 'CHAYWANPRASH', 6, '2025-04-23 15:48:59', '2025-07-31 17:37:42', NULL, 0),
-(193194, '2025-04-23-6808bf1751b53.png', 'kumkumadi-tailam', 1, 'KUMKUMADI TAILAM', 6, '2025-04-23 15:51:11', '2025-07-31 17:38:43', NULL, 0),
-(193195, '2025-04-23-6808bf6e46e50.png', 'kaya-gain-syp', 1, 'KAYA GAIN SYP', 6, '2025-04-23 15:52:38', '2025-07-03 17:59:56', NULL, 0),
-(193196, '2025-04-23-6808bfb913a5a.png', 'stree-kaya', 1, 'STREE KAYA', 6, '2025-04-23 15:53:53', '2025-04-23 15:53:53', NULL, 0),
-(193197, '2025-04-23-6808c0061a4a1.png', 'vitamin-c-seraum', 1, 'VITAMIN C SERAUM', 6, '2025-04-23 15:55:10', '2025-07-31 17:40:24', NULL, 0),
-(193198, '2025-04-23-6808c059d244c.png', 'hair-wellness-tab', 1, 'HAIR WELLNESS TAB', 6, '2025-04-23 15:56:33', '2025-04-23 15:56:33', NULL, 0),
-(193199, '2025-04-23-6808c0a757deb.png', 'rosemary-hair-oil', 1, 'ROSEMARY HAIR OIL', 6, '2025-04-23 15:57:51', '2025-07-31 17:41:08', NULL, 0),
-(193200, '2025-04-23-6808c0e52a5b0.png', 'mahabhringraj-hair-oil', 1, 'MAHABHRINGRAJ HAIR OIL', 6, '2025-04-23 15:58:53', '2025-07-31 17:41:57', NULL, 0),
-(193201, '2025-06-25-685b9e78540f5.png', 'glutathione-tab', 1, 'GLUTATHIONE TAB', 6, '2025-04-23 15:59:39', '2025-07-31 17:42:40', NULL, 0),
-(193202, '2025-07-11-6870eab07cd45.webp', 'sea-buckthorn', 1, 'SEA BUCKTHORN JUICE', 6, '2025-07-11 16:13:00', '2025-07-11 16:26:21', NULL, 0),
-(193203, '2025-07-11-6870ed416d0df.webp', 'liver-detox', 1, 'LIVER DETOX TABLETS', 6, '2025-07-11 16:23:53', '2025-07-27 17:33:20', NULL, 0);
+(1, 'default.jpg', NULL, 1, 'ACP', 6, '2025-08-25 15:16:36', '2025-08-25 15:16:36', NULL, 0),
+(2, 'default.jpg', NULL, 1, 'GSB', 6, '2025-08-25 15:16:44', '2025-08-25 15:16:44', NULL, 0),
+(3, 'default.jpg', NULL, 1, 'NLB', 6, '2025-08-25 15:16:55', '2025-08-25 15:16:55', NULL, 0),
+(4, 'default.jpg', NULL, 1, 'OWV', 6, '2025-08-25 15:17:04', '2025-08-25 15:17:04', NULL, 0),
+(5, 'default.jpg', NULL, 1, 'Standee', 6, '2025-08-25 15:17:12', '2025-08-25 15:17:12', NULL, 0),
+(6, 'default.jpg', NULL, 1, 'VOS', 6, '2025-08-25 15:17:17', '2025-08-25 15:17:17', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -3573,7 +3516,10 @@ INSERT INTO `login_history` (`id`, `user_id`, `role`, `ip_address`, `date`, `tim
 (1245, '6', 1, '122.161.48.88', '2025-08-21', '16:41:27', '74fded6329ea667c', NULL, 'WlhsS01XTXlWbmxZTW14clNXcHZhVTVwU1hOSmJrSm9Zek5PTTJJelNtdEphbTlwV2xSRmQxbFhVbXBOZW1zd1QxZEthRTVVYkdoWmJVcHNUbFJhYkUxRVZUTmFha2wzV21wbk5FMHlWV2xNUTBwcldWaFNiRmd6VW5CaVYxVnBUMmxKZVUxRVNURk1WRUUwVEZSSmVFbEVSVEpQYWxGNFQycEpNMGxwZDJsamJUbHpXbE5KTmtscVJXbE1RMHByV2xoYWNGa3lWbVpoVjFGcFQybEpNMDVIV210YVYxRXlUWHBKTlZwWFJUSk9hbVJxU1c0d1BRPT0=', NULL, 1, 'e10adc3949ba59abbe56e057f20f883e'),
 (1246, '6', 1, '::1', '2025-08-21', '18:20:43', '', NULL, '', NULL, 1, 'e10adc3949ba59abbe56e057f20f883e'),
 (1247, '6', 1, '::1', '2025-08-23', '16:59:19', '', NULL, '', NULL, 1, 'e10adc3949ba59abbe56e057f20f883e'),
-(1248, '6', 1, '::1', '2025-08-24', '20:28:19', '', NULL, '', NULL, 1, 'e10adc3949ba59abbe56e057f20f883e');
+(1248, '6', 1, '::1', '2025-08-24', '20:28:19', '', NULL, '', NULL, 1, 'e10adc3949ba59abbe56e057f20f883e'),
+(1249, '6', 1, '::1', '2025-08-25', '15:10:45', '', NULL, '', NULL, 1, 'e10adc3949ba59abbe56e057f20f883e'),
+(1250, '6', 1, '::1', '2025-08-25', '22:39:36', '', NULL, '', NULL, 1, 'e10adc3949ba59abbe56e057f20f883e'),
+(1251, '6', 1, '::1', '2025-08-25', '22:42:19', '', NULL, '', NULL, 1, 'e10adc3949ba59abbe56e057f20f883e');
 
 -- --------------------------------------------------------
 
@@ -4584,6 +4530,58 @@ INSERT INTO `product_temp` (`id`, `status`, `add_by`, `add_date_time`, `update_d
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `project_sub_type`
+--
+
+CREATE TABLE `project_sub_type` (
+  `id` int(11) NOT NULL,
+  `type` int(11) DEFAULT 0,
+  `image` text DEFAULT NULL,
+  `slug` text DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `name` varchar(500) DEFAULT NULL,
+  `add_by` int(11) DEFAULT NULL,
+  `add_date_time` datetime DEFAULT NULL,
+  `update_date_time` datetime DEFAULT NULL,
+  `update_history` text DEFAULT NULL,
+  `is_delete` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `project_type`
+--
+
+CREATE TABLE `project_type` (
+  `id` int(11) NOT NULL,
+  `image` text DEFAULT NULL,
+  `slug` text DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `name` varchar(500) DEFAULT NULL,
+  `total_image` int(2) DEFAULT 0,
+  `is_recee` int(1) DEFAULT 0,
+  `add_by` int(11) DEFAULT NULL,
+  `add_date_time` datetime DEFAULT NULL,
+  `update_date_time` datetime DEFAULT NULL,
+  `update_history` text DEFAULT NULL,
+  `is_delete` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `project_type`
+--
+
+INSERT INTO `project_type` (`id`, `image`, `slug`, `status`, `name`, `total_image`, `is_recee`, `add_by`, `add_date_time`, `update_date_time`, `update_history`, `is_delete`) VALUES
+(1, 'default.jpg', NULL, 1, 'Retail Drive (Recce & Post installation)', 1, 1, 6, '2025-08-25 15:15:27', '2025-08-26 00:16:55', NULL, 0),
+(4, 'default.jpg', NULL, 1, 'DIGITAL WALL PAINTING', 4, 0, 6, '2025-08-26 00:17:24', '2025-08-26 00:17:24', NULL, 0),
+(5, 'default.jpg', NULL, 1, 'Manual WALL PAINTING', 4, 0, 6, '2025-08-26 00:17:47', '2025-08-26 00:17:47', NULL, 0),
+(6, 'default.jpg', NULL, 1, 'STEPNEY COVER INSTALLATION', 1, 0, 6, '2025-08-26 00:18:03', '2025-08-26 00:18:03', NULL, 0),
+(7, 'default.jpg', NULL, 1, 'AUTO RICKSHAW BACK Cores INSTALLATION', 4, 0, 6, '2025-08-26 00:18:22', '2025-08-26 00:18:22', NULL, 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `refund_policy`
 --
 
@@ -4827,58 +4825,6 @@ CREATE TABLE `slugs` (
   `page_name` varchar(150) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `slugs`
---
-
-INSERT INTO `slugs` (`id`, `slug`, `table_name`, `p_id`, `page_name`) VALUES
-(2, 'grow-wave', 'package', 193128, NULL),
-(15, '7-simple-ways-to-keep-your-kids-toys-from-taking-over-your-home', 'blog', 26, 'blog-detail.blade.php'),
-(16, 'product-1', 'product', 193128, 'product-detail.blade.php'),
-(17, 'fat-loss-syrup-the-ultimate-natural-solution-for-weight-management', 'blog', 55, 'blog-detail.blade.php'),
-(18, 'fat-cutter-syrup-natural-weight-loss-solution-shivveda', 'blog', 56, 'blog-detail.blade.php'),
-(19, 'the-science-behind-kaya-trim-ras', 'blog', 57, 'blog-detail.blade.php'),
-(20, 'weight-loss-ras-your-ayurvedic-solution-to-shedding-extra-pounds', 'blog', 58, 'blog-detail.blade.php'),
-(22, 'unlocking-the-potential-of-kaya-trim-ras', 'blog', 59, 'blog-detail.blade.php'),
-(23, 'unlocking-the-potential-of-kaya-trim-ras-1', 'blog', 60, 'blog-detail.blade.php'),
-(24, 'your-natural-path-to-weight-loss', 'blog', 61, 'blog-detail.blade.php'),
-(25, '15-vitamin-c-kakadu-plum-face-serum-skin-lightening-serum-brightening-booster-21-day-result-by-shivveda', 'product', 193169, 'product-detail.blade.php'),
-(26, 'aar-par-energy-booster-20-capsules-100-natural-ingredients-shivveda-ayurveda', 'product', 193170, 'product-detail.blade.php'),
-(27, 'boost-immunity-naturally-with-shivveda-chandi-kesar-yukt-chyawanprash-enriched-with-amla-saffron', 'product', 193171, 'product-detail.blade.php'),
-(28, 'heart-mantra', 'product', 193172, 'product-detail.blade.php'),
-(29, 'india-s-no-1-natural-fat-burner-no-apple-cider-vinegar-kaya-trim-fat-cutter-with-green-tea', 'product', 193173, 'product-detail.blade.php'),
-(31, 'kesar-yukt-shilajit-pure-himalayan-energy-vitality-boost-with-saffron', 'product', 193175, 'product-detail.blade.php'),
-(32, 'kumkumadi-tailam-natural-ayurvedic-face-oil-for-radiant-skin-no-silicon-no-paraben', 'product', 193176, 'product-detail.blade.php'),
-(33, 'maha-bhringraj', 'product', 193177, 'product-detail.blade.php'),
-(34, 'naturally-balance-your-blood-sugar-with-rama-buti-ayurvedic-capsules-for-diabetes-care', 'product', 193178, 'product-detail.blade.php'),
-(35, 'rosemary-hair-oil-ayurveda-natural-hair-growth-scalp-nourishment-shivved-pvt-ltd', 'product', 193179, 'product-detail.blade.php'),
-(36, 'shivveda-hair-wellness-natural-hair-growth-and-care-supplement', 'product', 193180, 'product-detail.blade.php'),
-(37, 'shivveda-liver-detox-effervescent-tablets-your-natural-path-to-a-healthier-liver', 'product', 193181, 'product-detail.blade.php'),
-(38, 'shivveda-stone-out-natural-relief-for-kidney-stones', 'product', 193182, 'product-detail.blade.php'),
-(43, 'yer', 'blog', 62, 'blog-detail.blade.php'),
-(45, 'shivveda-stree-kaya-ayurvedic-herbal-supplement-for-women-s-wellness-hormonal-balance', 'product', 193183, 'product-detail.blade.php'),
-(52, 'kaya-trim-ras-strawberry-flavor-weight-loss-500ml', 'product', 193174, 'product-detail.blade.php'),
-(57, 'heart-mantra-tab', 'product', 193188, 'product-detail.blade.php'),
-(62, 'face-serum', 'product', 193193, 'product-detail.blade.php'),
-(65, 'stree-kaya', 'product', 193196, 'product-detail.blade.php'),
-(67, 'hair-wellness-tab', 'product', 193198, 'product-detail.blade.php'),
-(78, 'kaya-gain-syp', 'product', 193195, 'product-detail.blade.php'),
-(83, 'stone-out-syp-cap', 'product', 193189, 'product-detail.blade.php'),
-(84, 'kaya-trim-ras', 'product', 193186, 'product-detail.blade.php'),
-(85, 'go-madhu-care-syp', 'product', 193185, 'product-detail.blade.php'),
-(100, 'kaya-trim-fat-cutter-tab', 'product', 193184, 'product-detail.blade.php'),
-(101, 'rama-booti-tab', 'product', 193187, 'product-detail.blade.php'),
-(103, 'shilajit', 'product', 193190, 'product-detail.blade.php'),
-(104, 'aar-paar', 'product', 193191, 'product-detail.blade.php'),
-(106, 'chaywanprash', 'product', 193192, 'product-detail.blade.php'),
-(107, 'kumkumadi-tailam', 'product', 193194, 'product-detail.blade.php'),
-(108, 'vitamin-c-seraum', 'product', 193197, 'product-detail.blade.php'),
-(109, 'rosemary-hair-oil', 'product', 193199, 'product-detail.blade.php'),
-(110, 'mahabhringraj-hair-oil', 'product', 193200, 'product-detail.blade.php'),
-(112, 'glutathione-tab', 'product', 193201, 'product-detail.blade.php'),
-(113, 'sea-buckthorn', 'product', 193202, 'product-detail.blade.php'),
-(114, 'liver-detox', 'product', 193203, 'product-detail.blade.php');
-
 -- --------------------------------------------------------
 
 --
@@ -5103,7 +5049,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `user_id`, `name`, `lname`, `email`, `phone`, `conatct_person_phone`, `username`, `password`, `remember_token`, `add_date_time`, `activate_date_time`, `mail_date_time`, `status`, `role`, `gender`, `is_paid`, `kyc_step`, `kyc_message`, `image`, `address`, `country`, `state`, `city`, `add_by`, `update_date_time`, `update_history`, `slug`, `is_delete`) VALUES
-(6, 1000, 'SURAJ TEAM', NULL, 'admin@gmail.com', NULL, NULL, NULL, 'e10adc3949ba59abbe56e057f20f883e', '', '2020-08-30 15:56:58', '2025-03-05 15:56:04', '2025-03-05 15:56:04', 1, 1, 1, 1, 1, NULL, '2025-07-17-6878fb153d099.jpg', 'SHANTI NAGAR OFFICE', 99, '25', 'Delhi', 6, '2025-07-17 19:01:01', NULL, NULL, 0);
+(6, 1000, 'RAT SOFTWARE', NULL, 'admin@gmail.com', NULL, NULL, NULL, 'e10adc3949ba59abbe56e057f20f883e', '', '2020-08-30 15:56:58', '2025-03-05 15:56:04', '2025-03-05 15:56:04', 1, 1, 1, 1, 1, NULL, '2025-07-17-6878fb153d099.jpg', 'SHANTI NAGAR OFFICE', 99, '25', 'Delhi', 6, '2025-07-17 19:01:01', NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -5390,12 +5336,6 @@ ALTER TABLE `cart`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `category`
---
-ALTER TABLE `category`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `countries`
 --
 ALTER TABLE `countries`
@@ -5528,6 +5468,18 @@ ALTER TABLE `product_temp`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `project_sub_type`
+--
+ALTER TABLE `project_sub_type`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `project_type`
+--
+ALTER TABLE `project_type`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `refund_policy`
 --
 ALTER TABLE `refund_policy`
@@ -5641,12 +5593,6 @@ ALTER TABLE `cart`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=495;
 
 --
--- AUTO_INCREMENT for table `category`
---
-ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=193204;
-
---
 -- AUTO_INCREMENT for table `countries`
 --
 ALTER TABLE `countries`
@@ -5692,7 +5638,7 @@ ALTER TABLE `income_plan`
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=193204;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `kyc`
@@ -5710,7 +5656,7 @@ ALTER TABLE `kyc_option`
 -- AUTO_INCREMENT for table `login_history`
 --
 ALTER TABLE `login_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1249;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1252;
 
 --
 -- AUTO_INCREMENT for table `member_log`
@@ -5779,6 +5725,18 @@ ALTER TABLE `product_temp`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=193259;
 
 --
+-- AUTO_INCREMENT for table `project_sub_type`
+--
+ALTER TABLE `project_sub_type`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `project_type`
+--
+ALTER TABLE `project_type`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `refund_policy`
 --
 ALTER TABLE `refund_policy`
@@ -5800,7 +5758,7 @@ ALTER TABLE `setting`
 -- AUTO_INCREMENT for table `slugs`
 --
 ALTER TABLE `slugs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `states`

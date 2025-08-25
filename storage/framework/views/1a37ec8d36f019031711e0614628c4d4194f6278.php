@@ -7,7 +7,7 @@
             </div>
             <div class="col-sm-6">
                 <div class="text-sm-end d-none d-sm-block">
-                    Design & Develop by <a href="https://www.codediffusion.in/">Code Diffusion/</a>
+                    Design & Develop by <a href="<?php echo e(env('APP_COPY_RIGHT_LINK')); ?>"><?php echo e(env('APP_COPY_RIGHT_NAME')); ?></a>
                 </div>
             </div>
         </div>

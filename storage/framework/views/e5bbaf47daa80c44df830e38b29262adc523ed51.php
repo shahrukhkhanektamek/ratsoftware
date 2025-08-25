@@ -32,18 +32,18 @@
         <!-- auth page content -->
         <div class="auth-page-content">
             <div class="container">
-                <!--<div class="row">-->
-                <!--    <div class="col-lg-12">-->
-                <!--        <div class="text-center mt-sm-5 mb-4 text-white-50">-->
-                <!--            <div>-->
-                <!--                <a href="index.php" class="d-inline-block auth-logo">-->
-                <!--                    <img src="<?php echo e(url('public')); ?>/assetsadmin/images/logo.png" alt="">-->
-                <!--                </a>-->
-                <!--            </div>-->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="text-center mt-sm-5 mb-4 text-white-50">
+                            <div>
+                                <a href="index.php" class="d-inline-block auth-logo">
+                                    <img src="<?php echo e(url('public')); ?>/assetsadmin/images/logo.png" alt="">
+                                </a>
+                            </div>
                             
-                <!--        </div>-->
-                <!--    </div>-->
-                <!--</div>-->
+                        </div>
+                    </div>
+                </div>
                 <!-- end row -->
 
                 <div class="row justify-content-center">
@@ -110,7 +110,7 @@
                     <div class="col-lg-12">
                         <div class="text-center">
                             <p class="mb-0 text-muted">&copy;
-                                <script>document.write(new Date().getFullYear())</script> <?php echo e(env("APP_NAME")); ?>. Developed By <i class="mdi mdi-heart text-danger"></i> by <a href="www.uniquewebcreator.com">Unique Web Creator</a>
+                                <script>document.write(new Date().getFullYear())</script> <?php echo e(env("APP_NAME")); ?>. Developed By <i class="mdi mdi-heart text-danger"></i> by <a href="<?php echo e(env('APP_COPY_RIGHT_LINK')); ?>" target="_blank"><?php echo e(env('APP_COPY_RIGHT_NAME')); ?></a>
                             </p>
                         </div>
                     </div>

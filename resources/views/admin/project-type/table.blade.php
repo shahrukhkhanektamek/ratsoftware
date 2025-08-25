@@ -4,6 +4,8 @@
             <thead class="table-light">
                 <tr>                    
                     <th scope="col">Name</th>
+                    <th scope="col">Post Images</th>
+                    <th scope="col">Recee</th>
                     <th scope="col">Status</th>
                     <th scope="col">Action</th>
                 </tr>
@@ -21,6 +23,8 @@
                             </div>
                         </div>
                     </td>
+                    <td>{{$value->total_image}}</td>
+                    <td><span class="badge btn btn-{{$value->is_recee?'success':'danger'}}">{{$value->is_recee?'Yes':'No'}}</span></td>
                     <td>{!!Helpers::active_inactive($value->status)!!}</td>
                     <td>
                         <div class="d-flex gap-2">

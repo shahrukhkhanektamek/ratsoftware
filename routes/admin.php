@@ -15,7 +15,8 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UserController;
 
 use App\Http\Controllers\Admin\ItemController;
-use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProjectTypeController;
+use App\Http\Controllers\Admin\ProjectSubTypeController;
 
 use App\Http\Controllers\Admin\SettingController;
 
@@ -96,15 +97,27 @@ Route::group(['middleware' => ['admin']], function () {
         Route::post('excel_import_action', [ItemController::class, 'excel_import_action'])->name('excel_import_action');
     });
 
-    Route::group(['prefix'=>'category', 'as'=>'category.'], function(){
-        Route::get('/', [CategoryController::class, 'index'])->name('list');
-        Route::get('load_data', [CategoryController::class, 'load_data'])->name('load_data');
-        Route::get('add', [CategoryController::class, 'add'])->name('add');
-        Route::get('edit/{id?}', [CategoryController::class, 'edit'])->name('edit');
-        Route::post('update', [CategoryController::class, 'update'])->name('update');
-        Route::post('delete/{id?}', [CategoryController::class, 'delete'])->name('delete');
-        Route::get('excel_import', [CategoryController::class, 'excel_import'])->name('excel_import');
-        Route::post('excel_import_action', [CategoryController::class, 'excel_import_action'])->name('excel_import_action');
+    Route::group(['prefix'=>'project-type', 'as'=>'project-type.'], function(){
+        Route::get('/', [ProjectTypeController::class, 'index'])->name('list');
+        Route::get('load_data', [ProjectTypeController::class, 'load_data'])->name('load_data');
+        Route::get('add', [ProjectTypeController::class, 'add'])->name('add');
+        Route::get('edit/{id?}', [ProjectTypeController::class, 'edit'])->name('edit');
+        Route::post('update', [ProjectTypeController::class, 'update'])->name('update');
+        Route::post('delete/{id?}', [ProjectTypeController::class, 'delete'])->name('delete');
+        Route::get('excel_import', [ProjectTypeController::class, 'excel_import'])->name('excel_import');
+        Route::post('excel_import_action', [ProjectTypeController::class, 'excel_import_action'])->name('excel_import_action');
+    });
+
+
+    Route::group(['prefix'=>'project-sub-type', 'as'=>'project-sub-type.'], function(){
+        Route::get('/', [ProjectSubTypeController::class, 'index'])->name('list');
+        Route::get('load_data', [ProjectSubTypeController::class, 'load_data'])->name('load_data');
+        Route::get('add', [ProjectSubTypeController::class, 'add'])->name('add');
+        Route::get('edit/{id?}', [ProjectSubTypeController::class, 'edit'])->name('edit');
+        Route::post('update', [ProjectSubTypeController::class, 'update'])->name('update');
+        Route::post('delete/{id?}', [ProjectSubTypeController::class, 'delete'])->name('delete');
+        Route::get('excel_import', [ProjectSubTypeController::class, 'excel_import'])->name('excel_import');
+        Route::post('excel_import_action', [ProjectSubTypeController::class, 'excel_import_action'])->name('excel_import_action');
     });
 
 

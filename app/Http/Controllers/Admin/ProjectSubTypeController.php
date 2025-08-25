@@ -11,23 +11,23 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Crypt;
 use App\Helper\ImageManager;
-use App\Models\Category;
+use App\Models\ProjectSubType;
 
 use PhpOffice\PhpSpreadsheet\Shared\Date;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
  
-class CategoryController extends Controller
+class ProjectSubTypeController extends Controller
 {
      protected $arr_values = array(
-        'routename'=>'category.', 
-        'title'=>'Category', 
-        'table_name'=>'category',
-        'page_title'=>'Category',
-        "folder_name"=>'/category',
+        'routename'=>'project-sub-type.', 
+        'title'=>'Project Sub Type', 
+        'table_name'=>'project_sub_type',
+        'page_title'=>'Project Sub Type',
+        "folder_name"=>'/project-sub-type',
         "upload_path"=>'upload/',
-        "page_name"=>'category-detail.blade.php',
+        "page_name"=>'project-sub-type.blade.php',
         "keys"=>'id,name',
         "all_image_column_names"=>array("image"),
        );  
@@ -86,7 +86,12 @@ class CategoryController extends Controller
 
 
 
-      $data_list = Category::where(['status' => $status])->orderBy('id',$order_by);
+      $data_list = ProjectSubType::where([$this->arr_values['table_name'].'.status' => $status])
+      
+      ->leftJoin('project_type as project_type', 'project_type.id', '=', $this->arr_values['table_name'] . '.type')
+      ->select($this->arr_values['table_name'] . '.*','project_type.name as project_type_name')
+
+      ->orderBy('id',$order_by);
       
       if(!empty($filter_search_value))
       {
@@ -142,7 +147,7 @@ class CategoryController extends Controller
         $data['pagenation'] = array($this->arr_values['title']);
         $data['trash'] = '';
 
-        $row = Category::where(["id"=>$id,])->first();
+        $row = ProjectSubType::where(["id"=>$id,])->first();
         if(!empty($row))
         {
             return view($this->arr_values['folder_name'].'/form',compact('data','row'));
@@ -156,14 +161,15 @@ class CategoryController extends Controller
     public function update(Request $request)
     {
         $id = Crypt::decryptString($request->id);
-        if(empty($id)) $data = new Category;
-        else $data = Category::find($id);
+        if(empty($id)) $data = new ProjectSubType;
+        else $data = ProjectSubType::find($id);
 
         $session = Session::get('admin');
         $add_by = $session['id'];
         
         
         $data->name = $request->name;
+        $data->type = $request->type;
         $data->status = $request->status;
         
 
@@ -196,7 +202,7 @@ class CategoryController extends Controller
     public function delete(Request $request, $id)
     {
         $id = Crypt::decryptString($request->id);
-        $data = Category::find($id);
+        $data = ProjectSubType::find($id);
         if($data->delete())
         {
             $responseCode = 200;
@@ -229,7 +235,7 @@ class CategoryController extends Controller
     public function excel_import_action(Request $request)
     {
 
-        $table_name = 'Category_temp';
+        $table_name = 'ProjectSubType_temp';
         // Validate that a file is uploaded
         $request->validate([
             'file' => 'required|mimes:xlsx,csv,xls',

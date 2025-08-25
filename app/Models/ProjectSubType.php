@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 
-class Category extends Model
+class ProjectSubType extends Model
 {
     const CREATED_AT = 'add_date_time';
     const UPDATED_AT = 'update_date_time';
-    protected $table = 'category';    
+    protected $table = 'project_sub_type';    
 }
