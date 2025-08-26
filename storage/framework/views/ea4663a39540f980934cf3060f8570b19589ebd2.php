@@ -49,8 +49,19 @@
                                                 <input type="text" class="form-control" placeholder="Enter Name" name="name" value="<?php echo e(@$row->name); ?>" required>
                                             </div>
                                             <div class="col-lg-6">
+                                                <label class="form-label" for="product-title-input">Post Images</label>
+                                                <input type="number" class="form-control" placeholder="Enter Post Images" name="total_image" value="<?php echo e(@$row->total_image); ?>" required>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <label for="formFile" class="form-label">Recee Required</label>
+                                                <select class="form-select mb-3" name="is_recee">
+                                                    <option value="0" <?php if(!empty(@$row) && @$row->is_recee==0): ?>selected <?php endif; ?> >No</option>
+                                                    <option value="1" <?php if(!empty(@$row) && @$row->is_recee==1): ?>selected <?php endif; ?> >Yes</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-6">
                                                 <label for="formFile" class="form-label">Action</label>
-                                                <select class="form-select mb-3" aria-label="Default select example" name="status">
+                                                <select class="form-select mb-3" name="status">
                                                     <option value="1" <?php if(!empty(@$row) && @$row->status==1): ?>selected <?php endif; ?> >Active</option>
                                                     <option value="0" <?php if(!empty(@$row) && @$row->status==0): ?>selected <?php endif; ?> >Inactive</option>
                                                 </select>
@@ -92,4 +103,4 @@
     <?php echo $__env->make('admin.headers.mainjs', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <!-- End Include Script -->
 </body>
-</html><?php /**PATH C:\xamp\htdocs\projects\ratsoftware\resources\views/admin/item/form.blade.php ENDPATH**/ ?>
+</html><?php /**PATH C:\xamp\htdocs\projects\ratsoftware\resources\views/admin/project-type/form.blade.php ENDPATH**/ ?>

@@ -86,6 +86,11 @@
                                                 <input type="number" class="form-control" placeholder="Enter Phone" name="phone" value="<?php echo e(@$row->phone); ?>" >
                                             </div>
 
+                                            <div class="col-lg-8">
+                                                <label class="form-label" for="product-title-input">Contact Person Phone </label>
+                                                <input type="number" class="form-control" placeholder="Enter Phone" name="conatct_person_phone" value="<?php echo e(@$row->conatct_person_phone); ?>" >
+                                            </div>
+
                                             <div class="col-lg-6">
                                                 <label class="form-label" for="product-title-input">State </label>
 
@@ -109,7 +114,13 @@
                                                 <input type="text" class="form-control" placeholder="Enter Address" name="address" value="<?php echo e(@$row->address); ?>" >
                                             </div>
 
+                                            
                                             <?php if(empty($row)): ?>
+                                            <div class="col-lg-12">
+                                                <label class="form-label" for="product-title-input">Username</label>
+                                                <input type="text" class="form-control" placeholder="Enter Username" name="username" value="<?php echo e(@$row->username); ?>" >
+                                            </div>
+
                                             <div class="col-lg-12">
                                                 <label class="form-label" for="product-title-input">Password </label>
                                                 <input type="text" class="form-control" placeholder="Enter Password" name="password" value="<?php echo e(@$row->password); ?>" >

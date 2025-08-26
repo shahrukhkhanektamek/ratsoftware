@@ -162,13 +162,39 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="<?php echo e(route('item.list')); ?>">
-                                <i class="ri-file-user-line"></i> <span data-key="t-dashboards">Work Type Master</span>
+                            <a class="nav-link menu-link" href="<?php echo e(route('project-type.list')); ?>?type=2">
+                                <i class="ri-file-user-line"></i> <span data-key="t-dashboards">Project Type Master</span>
                             </a>
                         </li>
 
+
+
+                        <!-- <li class="nav-item">
+                            <a href="#ProjectType" class="nav-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="ProjectType" data-key="t-projects">
+                                <i class=" ri-settings-2-line"></i>Project Type
+                            </a>
+                            <div class="collapse menu-dropdown" id="ProjectType">
+                                <ul class="nav nav-sm flex-column">
+                                    
+                                    <li class="nav-item">
+                                        <a class="nav-link menu-link" href="<?php echo e(route('project-type.list')); ?>">
+                                            <i class=" ri-file-copy-line"></i> <span data-key="t-dashboards">Type</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link menu-link" href="<?php echo e(route('project-sub-type.list')); ?>">
+                                            <i class=" ri-file-copy-line"></i> <span data-key="t-dashboards">Sub Type</span>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li> -->
+
+
+
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="<?php echo e(route('user.list')); ?>">
+                            <a class="nav-link menu-link" href="<?php echo e(route('item.list')); ?>">
                                 <i class="ri-file-user-line"></i> <span data-key="t-dashboards">Item Master</span>
                             </a>
                         </li>
@@ -182,7 +208,32 @@
                         
 
                         
+                        <li class="nav-item">
+                            <a href="#CountryStateCity" class="nav-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="CountryStateCity" data-key="t-projects">
+                                <i class=" ri-settings-2-line"></i>Country/State/City
+                            </a>
+                            <div class="collapse menu-dropdown" id="CountryStateCity">
+                                <ul class="nav nav-sm flex-column">
+                                    
+                                    <li class="nav-item">
+                                        <a class="nav-link menu-link" href="<?php echo e(route('country.list')); ?>">
+                                            <i class=" ri-file-copy-line"></i> <span data-key="t-dashboards">Country</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link menu-link" href="<?php echo e(route('state.list')); ?>">
+                                            <i class=" ri-file-copy-line"></i> <span data-key="t-dashboards">State</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link menu-link" href="<?php echo e(route('city.list')); ?>">
+                                            <i class=" ri-file-copy-line"></i> <span data-key="t-dashboards">City</span>
+                                        </a>
+                                    </li>
 
+                                </ul>
+                            </div>
+                        </li>
                         
                         <li class="nav-item">
                             <a href="#sidebarSetting" class="nav-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarSetting" data-key="t-projects">

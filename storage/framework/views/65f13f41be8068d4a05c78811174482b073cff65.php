@@ -4,6 +4,7 @@
             <thead class="table-light">
                 <tr>                    
                     <th scope="col">Name</th>
+                    <th scope="col">Project Type</th>
                     <th scope="col">Status</th>
                     <th scope="col">Action</th>
                 </tr>
@@ -13,12 +14,16 @@
                 <tr>
                     <td>
                         <div class="d-flex gap-2 align-items-center">
+                            <div class="flex-shrink-0">
+                                <img class="avatar-xs rounded-circle" src="<?php echo e(Helpers::image_check($value->image)); ?>" alt="banner image"/>
+                            </div>
                             <div class="flex-grow-1">
                                 <?php echo e($value->name); ?>
 
                             </div>
                         </div>
                     </td>
+                    <td><?php echo e($value->project_type_name); ?></td>
                     <td><?php echo Helpers::active_inactive($value->status); ?></td>
                     <td>
                         <div class="d-flex gap-2">
@@ -44,4 +49,4 @@
     <?php echo e($data_list->links()); ?>
 
 </div>
-<?php /**PATH C:\xamp\htdocs\projects\ratsoftware\resources\views/admin/item/table.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\xamp\htdocs\projects\ratsoftware\resources\views/admin/project-sub-type/table.blade.php ENDPATH**/ ?>

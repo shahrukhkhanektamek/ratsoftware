@@ -18,9 +18,14 @@ use App\Http\Controllers\Admin\ItemController;
 use App\Http\Controllers\Admin\ProjectTypeController;
 use App\Http\Controllers\Admin\ProjectSubTypeController;
 
+
+
+
+
+use App\Http\Controllers\Admin\CountryController;
+use App\Http\Controllers\Admin\StateController;
+use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\SettingController;
-
-
 
 
 
@@ -202,6 +207,38 @@ Route::group(['middleware' => ['admin']], function () {
 
 
     
+    Route::group(['prefix'=>'country', 'as'=>'country.'], function(){
+        Route::get('/', [CountryController::class, 'index'])->name('list');
+        Route::get('load_data', [CountryController::class, 'load_data'])->name('load_data');
+        Route::get('add', [CountryController::class, 'add'])->name('add');
+        Route::get('edit/{id?}', [CountryController::class, 'edit'])->name('edit');
+        Route::post('update', [CountryController::class, 'update'])->name('update');
+        Route::post('delete/{id?}', [CountryController::class, 'delete'])->name('delete');
+        Route::get('excel_import', [CountryController::class, 'excel_import'])->name('excel_import');
+        Route::post('excel_import_action', [CountryController::class, 'excel_import_action'])->name('excel_import_action');
+    });    
+    Route::group(['prefix'=>'state', 'as'=>'state.'], function(){
+        Route::get('/', [StateController::class, 'index'])->name('list');
+        Route::get('load_data', [StateController::class, 'load_data'])->name('load_data');
+        Route::get('add', [StateController::class, 'add'])->name('add');
+        Route::get('edit/{id?}', [StateController::class, 'edit'])->name('edit');
+        Route::post('update', [StateController::class, 'update'])->name('update');
+        Route::post('delete/{id?}', [StateController::class, 'delete'])->name('delete');
+        Route::get('excel_import', [StateController::class, 'excel_import'])->name('excel_import');
+        Route::post('excel_import_action', [StateController::class, 'excel_import_action'])->name('excel_import_action');
+    });    
+    Route::group(['prefix'=>'city', 'as'=>'city.'], function(){
+        Route::get('/', [CityController::class, 'index'])->name('list');
+        Route::get('load_data', [CityController::class, 'load_data'])->name('load_data');
+        Route::get('add', [CityController::class, 'add'])->name('add');
+        Route::get('edit/{id?}', [CityController::class, 'edit'])->name('edit');
+        Route::post('update', [CityController::class, 'update'])->name('update');
+        Route::post('delete/{id?}', [CityController::class, 'delete'])->name('delete');
+        Route::get('excel_import', [CityController::class, 'excel_import'])->name('excel_import');
+        Route::post('excel_import_action', [CityController::class, 'excel_import_action'])->name('excel_import_action');
+    });
+
+
 
 
     Route::group(['prefix'=>'setting', 'as'=>'setting.'], function(){

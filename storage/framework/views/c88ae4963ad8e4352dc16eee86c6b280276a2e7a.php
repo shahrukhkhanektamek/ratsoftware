@@ -3,17 +3,17 @@
     data-sidebar-image="none" data-preloader="disable" data-theme="default" data-theme-colors="default">
 <head>
     <meta charset="utf-8" />
-    <title>{{$data['page_title']}} | {{env("APP_NAME")}}</title>
+    <title><?php echo e($data['page_title']); ?> | <?php echo e(env("APP_NAME")); ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Start Include Css -->
-    @include('admin.headers.maincss')
+    <?php echo $__env->make('admin.headers.maincss', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <!-- End Include Css -->
 </head>
 <body>
     <!-- Begin page -->
     <div id="layout-wrapper">
         <!-- Start Include Header -->
-        @include('admin.headers.header')
+        <?php echo $__env->make('admin.headers.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         <!-- End Include Header -->
         <div class="main-content">
             <div class="page-content">
@@ -23,11 +23,12 @@
                         <div class="col-12">
                             <div
                                 class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                                <h4 class="mb-sm-0">{{$data['page_title']}}</h4>
+                                <h4 class="mb-sm-0"><?php echo e($data['page_title']); ?></h4>
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                                        <li class="breadcrumb-item active">{{$data['page_title']}}
+                                        <li class="breadcrumb-item"><a href="<?php echo e(route('dashboard')); ?>">Home</a></li>
+                                        <li class="breadcrumb-item active"><?php echo e($data['page_title']); ?>
+
                                         </li>
                                     </ol>
                                 </div>
@@ -35,9 +36,9 @@
                         </div>
                     </div>
                     <!-- end page title -->
-                    <form class="needs-validation form_data" action="{{$data['submit_url']}}" method="post" enctype="multipart/form-data" id="form_data_submit" novalidate>
-                        @csrf
-                        <input type="hidden" name="id" value="{{Crypt::encryptString(@$row->id)}}">
+                    <form class="needs-validation form_data" action="<?php echo e($data['submit_url']); ?>" method="post" enctype="multipart/form-data" id="form_data_submit" novalidate>
+                        <?php echo csrf_field(); ?>
+                        <input type="hidden" name="id" value="<?php echo e(Crypt::encryptString(@$row->id)); ?>">
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="card">
@@ -46,24 +47,24 @@
 
                                             <div class="col-lg-4">
                                                 <label for="formFile" class="form-label">Select Project Type</label>
-                                                <select class="form-select mb-3" name="type" required>
+                                                <select class="form-select mb-3" name="type">
                                                     <option value="">Select Project Type</option>
-                                                    @php($list = DB::table('project_type')->get())
-                                                    @foreach($list as $key=>$value)
-                                                        <option value="{{$value->id}}" @if(!empty(@$row) && @$row->type==$value->id)selected @endif >{{$value->name}}</option>
-                                                    @endforeach                                                    
+                                                    <?php ($list = DB::table('project_type')->get()); ?>
+                                                    <?php $__currentLoopData = $list; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                        <option value="<?php echo e($value->id); ?>" <?php if(!empty(@$row) && @$row->type==$value->id): ?>selected <?php endif; ?> ><?php echo e($value->name); ?></option>
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>                                                    
                                                 </select>
                                             </div>
 
                                             <div class="col-lg-4">
                                                 <label class="form-label" for="product-title-input">Name</label>
-                                                <input type="text" class="form-control" placeholder="Enter Name" name="name" value="{{@$row->name}}" required>
+                                                <input type="text" class="form-control" placeholder="Enter Name" name="name" value="<?php echo e(@$row->name); ?>" required>
                                             </div>
                                             <div class="col-lg-4">
                                                 <label for="formFile" class="form-label">Action</label>
                                                 <select class="form-select mb-3" aria-label="Default select example" name="status">
-                                                    <option value="1" @if(!empty(@$row) && @$row->status==1)selected @endif >Active</option>
-                                                    <option value="0" @if(!empty(@$row) && @$row->status==0)selected @endif >Inactive</option>
+                                                    <option value="1" <?php if(!empty(@$row) && @$row->status==1): ?>selected <?php endif; ?> >Active</option>
+                                                    <option value="0" <?php if(!empty(@$row) && @$row->status==0): ?>selected <?php endif; ?> >Inactive</option>
                                                 </select>
                                             </div>
                                             
@@ -74,7 +75,7 @@
                                                     <input class="form-control upload-single-image" type="file" name="image" data-target="image">
                                                 </label>
                                                 <div class="col-md-4">                                                    
-                                                    <img class="upload-img-view img-thumbnail mt-2 mb-2 image" id="viewer" src="{{Helpers::image_check(@$row->image)}}" alt="banner image"/>
+                                                    <img class="upload-img-view img-thumbnail mt-2 mb-2 image" id="viewer" src="<?php echo e(Helpers::image_check(@$row->image)); ?>" alt="banner image"/>
                                                 </div>
                                             </div>
                                             
@@ -94,13 +95,13 @@
             </div>
             <!-- End Page-content -->
             <!-- Start Include Footer -->
-            @include('admin.headers.footer')
+            <?php echo $__env->make('admin.headers.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             <!-- End Include Footer -->
         </div>
     </div>
     <!-- END layout-wrapper -->
     <!-- Start Include Script -->
-    @include('admin.headers.mainjs')
+    <?php echo $__env->make('admin.headers.mainjs', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <!-- End Include Script -->
 </body>
-</html>
+</html><?php /**PATH C:\xamp\htdocs\projects\ratsoftware\resources\views/admin/project-sub-type/form.blade.php ENDPATH**/ ?>

@@ -43,32 +43,31 @@
                                 <div class="card">
                                     <div class="card-body frm">
                                         <div class="row">
-
-                                            <div class="col-lg-4">
-                                                <label for="formFile" class="form-label">Select Project Type</label>
-                                                <select class="form-select mb-3" name="type" required>
-                                                    <option value="">Select Project Type</option>
-                                                    @php($list = DB::table('project_type')->get())
-                                                    @foreach($list as $key=>$value)
-                                                        <option value="{{$value->id}}" @if(!empty(@$row) && @$row->type==$value->id)selected @endif >{{$value->name}}</option>
-                                                    @endforeach                                                    
-                                                </select>
-                                            </div>
-
-                                            <div class="col-lg-4">
+                                            <div class="col-lg-6">
                                                 <label class="form-label" for="product-title-input">Name</label>
                                                 <input type="text" class="form-control" placeholder="Enter Name" name="name" value="{{@$row->name}}" required>
                                             </div>
-                                            <div class="col-lg-4">
+
+                                            <div class="col-lg-6">
+                                                <label for="formFile" class="form-label">Country</label>
+                                                <select class="form-select mb-3" name="country_id" required id="">
+                                                    <option value="" >Select</option>
+                                                    
+                                                        <!-- <option value="1" @if(!empty(@$row) && @$row->country_id==1)selected @endif >Active</option> -->
+                                                    
+                                                </select>
+                                            </div>
+
+                                            <div class="col-lg-6">
                                                 <label for="formFile" class="form-label">Action</label>
-                                                <select class="form-select mb-3" aria-label="Default select example" name="status">
+                                                <select class="form-select mb-3" name="status">
                                                     <option value="1" @if(!empty(@$row) && @$row->status==1)selected @endif >Active</option>
                                                     <option value="0" @if(!empty(@$row) && @$row->status==0)selected @endif >Inactive</option>
                                                 </select>
                                             </div>
                                             
 
-                                            <div class="col-lg-12 hide"> 
+                                            <div class="col-lg-12 hide">
                                                 <label for="formFile" class="form-label b-block">Image</label>
                                                 <label class="d-block">
                                                     <input class="form-control upload-single-image" type="file" name="image" data-target="image">
