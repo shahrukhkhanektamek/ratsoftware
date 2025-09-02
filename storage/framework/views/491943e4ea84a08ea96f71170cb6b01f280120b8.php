@@ -44,63 +44,61 @@
                                 <div class="card">
                                     <div class="card-body frm">
                                         <div class="row">
-                                            <div class="col-lg-12">
-                                                <label class="form-label" for="product-title-input">Name</label>
-                                                <input type="text" class="form-control" placeholder="Enter Name" name="name" value="<?php echo e(@$row->name); ?>" required>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <label class="form-label" for="product-title-input">Slug</label>
-                                                <input type="text" class="form-control" placeholder="Enter Slug" name="slug" value="<?php echo e(@$row->slug); ?>" required>
-                                            </div>
+
                                             <div class="col-lg-4">
-                                                <label class="form-label" for="product-title-input">MRP Price</label>
-                                                <input type="number" class="form-control" placeholder="Enter MRP Price" name="real_price" value="<?php echo e(@$row->real_price); ?>" required>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <label class="form-label" for="product-title-input">Sale Price</label>
-                                                <input type="number" class="form-control" placeholder="Enter Sale Price" name="sale_price" value="<?php echo e(@$row->sale_price); ?>" required>
+                                                <label for="formFile" class="form-label">Select Client</label>
+                                                <select class="form-select mb-3" name="client_id" required id="select-client">
+                                                    <option value="" >Select</option>
+                                                    <?php ($client = DB::table("users")->where(["id"=>@$row->client_id,])->first()); ?>
+                                                    <?php if(!empty($client)): ?>
+                                                        <option value="<?php echo e($client->id); ?>" selected ><?php echo e($client->name); ?></option>
+                                                    <?php endif; ?>                                                    
+                                                </select>
                                             </div>
 
                                             <div class="col-lg-4">
-                                                <label class="form-label" for="product-title-input">BV</label>
-                                                <input type="number" class="form-control" placeholder="Enter BV" name="bv" value="<?php echo e(@$row->bv); ?>" required>
-                                            </div>
-
-                                            <div class="col-lg-12">
-                                                <label class="form-label" for="product-title-input">Description</label>
-                                                <textarea class="form-control" name="sort_description" value="<?php echo e(@$row->sort_description); ?>" ><?php echo e(@$row->sort_description); ?></textarea>
-                                            </div>
-
-                                            <div class="col-lg-12">
-                                                <label class="form-label" for="product-title-input">Detail</label>
-                                                <textarea class="form-control" name="description" value="<?php echo e(@$row->description); ?>" ><?php echo e(@$row->description); ?></textarea>
-                                                <script>CKEDITOR.replace( 'description' );</script>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <label class="form-label" for="product-title-input">Information</label>
-                                                <textarea class="form-control" name="information" value="<?php echo e(@$row->information); ?>" ><?php echo e(@$row->information); ?></textarea>
-                                                <script>CKEDITOR.replace( 'information' );</script>
+                                                <label for="formFile" class="form-label">Select Project Type</label>
+                                                <select class="form-select mb-3" name="type" required id="select-project-type">
+                                                    <option value="" >Select</option>
+                                                    <?php ($projectType = DB::table("project_type")->where(["id"=>@$row->type,])->first()); ?>
+                                                    <?php if(!empty($projectType)): ?>
+                                                        <option value="<?php echo e($projectType->id); ?>" selected ><?php echo e($projectType->name); ?></option>
+                                                    <?php endif; ?>                                                    
+                                                </select>
                                             </div>
 
                                             <div class="col-lg-4">
-                                                <label for="formFile" class="form-label">Display Image</label>
-                                                <label>
-                                                    <input class="form-control upload-single-image" type="file" name="display_image" data-target="display_image">
-                                                    <img class="upload-img-view img-thumbnail mt-2 mb-2 display_image" id="viewer" 
-                                                        src="<?php echo e(Helpers::image_check(@$row->display_image)); ?>" alt="banner image"/>
-                                                </label>
+                                                <label for="formFile" class="form-label">Select Project Item</label>
+                                                <select class="form-select mb-3" name="item" required id="select-item">
+                                                    <option value="" >Select</option>
+                                                    <?php ($projectItem = DB::table("item")->where(["id"=>@$row->item,])->first()); ?>
+                                                    <?php if(!empty($projectItem)): ?>
+                                                        <option value="<?php echo e($projectItem->id); ?>" selected ><?php echo e($projectItem->name); ?></option>
+                                                    <?php endif; ?>                                                      
+                                                </select>
                                             </div>
+
                                             <div class="col-lg-4">
-                                                <label for="formFile" class="form-label">Inner Image</label>
-                                                <label>
-                                                    <input class="form-control upload-single-image" type="file" name="inner_image" data-target="inner_image">
-                                                    <img class="upload-img-view img-thumbnail mt-2 mb-2 inner_image" id="viewer" 
-                                                        src="<?php echo e(Helpers::image_check(@$row->inner_image)); ?>" alt="banner image"/>
-                                                </label>
+                                                <label class="form-label" for="product-title-input">Length</label>
+                                                <input type="number" class="form-control" placeholder="Enter Length" name="length" value="<?php echo e(@$row->length); ?>" id="length" required>
                                             </div>
+
+                                            <div class="col-lg-4">
+                                                <label class="form-label" for="product-title-input">Height</label>
+                                                <input type="number" class="form-control" placeholder="Enter Height" name="height" value="<?php echo e(@$row->height); ?>" id="height" required>
+                                            </div>
+
+                                            <div class="col-lg-4">
+                                                <label class="form-label" for="product-title-input">Sqft</label>
+                                                <input type="number" class="form-control" placeholder="Enter Sqft" name="sqft" value="<?php echo e(@$row->sqft); ?>" id="sqft" required readonly>
+                                            </div>
+
+                                            
+                                            
+
                                             <div class="col-lg-4">
                                                 <label for="formFile" class="form-label">Action</label>
-                                                <select class="form-select mb-3" aria-label="Default select example" name="status">
+                                                <select class="form-select mb-3" name="status">
                                                     <option value="1" <?php if(!empty(@$row) && @$row->status==1): ?>selected <?php endif; ?> >Active</option>
                                                     <option value="0" <?php if(!empty(@$row) && @$row->status==0): ?>selected <?php endif; ?> >Inactive</option>
                                                 </select>
@@ -129,5 +127,23 @@
     <!-- Start Include Script -->
     <?php echo $__env->make('admin.headers.mainjs', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <!-- End Include Script -->
+
+
+
+    <script>
+        function getsqft() {
+            let length = $("#length").val();
+            let height = $("#height").val();
+
+            $("#sqft").val(length*height);
+        }
+
+        $(document).on("keyup", "#length, #height",(function(e) {      
+            getsqft();            
+        }));
+
+        getsqft();
+    </script>
+
 </body>
 </html><?php /**PATH C:\xamp\htdocs\projects\ratsoftware\resources\views/admin/project/form.blade.php ENDPATH**/ ?>

@@ -82,6 +82,58 @@ class WebController extends Controller
         $data['results'] = $return_data;
         return response()->json($data, 200);
     }
+    public function search_client(Request $request)
+    {
+        $return_data = [];        
+        $search = $request->search;
+        $list = DB::table("users")
+        // ->where(["role"=>1,])
+        ->select('name','id')->limit(100);
+        if(!empty($search))
+        {        
+            $list = $list->where('name','LIKE',"%{$search}%");
+        }
+        $list = $list->get();
+        foreach ($list as $key => $value) {
+            $return_data[] = array("id"=>$value->id,"text"=>$value->name,);
+        }
+        $data['results'] = $return_data;
+        return response()->json($data, 200);
+    }
+    public function search_project_type(Request $request)
+    {
+        $return_data = [];        
+        $search = $request->search;
+        $list = DB::table("project_type")
+        ->select('name','id')->limit(100);
+        if(!empty($search))
+        {        
+            $list = $list->where('name','LIKE',"%{$search}%");
+        }
+        $list = $list->get();
+        foreach ($list as $key => $value) {
+            $return_data[] = array("id"=>$value->id,"text"=>$value->name,);
+        }
+        $data['results'] = $return_data;
+        return response()->json($data, 200);
+    }
+    public function search_item(Request $request)
+    {
+        $return_data = [];        
+        $search = $request->search;
+        $list = DB::table("item")
+        ->select('name','id')->limit(100);
+        if(!empty($search))
+        {        
+            $list = $list->where('name','LIKE',"%{$search}%");
+        }
+        $list = $list->get();
+        foreach ($list as $key => $value) {
+            $return_data[] = array("id"=>$value->id,"text"=>$value->name,);
+        }
+        $data['results'] = $return_data;
+        return response()->json($data, 200);
+    }
    
     
 }

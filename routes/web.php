@@ -89,6 +89,9 @@ Route::post('select-country', [WebController::class, 'search_country'])->name('s
 Route::post('select-state', [WebController::class, 'search_state'])->name('select-state');
 Route::post('select-city', [WebController::class, 'search_city'])->name('select-city');
 Route::post('search-category', [WebController::class, 'search_category'])->name('search-category');
+Route::post('select-client', [WebController::class, 'search_client'])->name('select-client');
+Route::post('select-project-type', [WebController::class, 'search_project_type'])->name('select-project-type');
+Route::post('select-item', [WebController::class, 'search_item'])->name('select-item');
 
 
 

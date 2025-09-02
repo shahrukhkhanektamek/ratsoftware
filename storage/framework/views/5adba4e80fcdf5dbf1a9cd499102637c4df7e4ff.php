@@ -188,6 +188,60 @@ $('#select-city').select2({
     }
   }
 });
+$('#select-client').select2({
+  ajax: {
+    url: "<?php echo e(route('select-client')); ?>",
+    method:"post",
+    "headers": {
+    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+   },
+    data: function (params) {
+      var query = {
+        search: params.term,
+        type: 'public',
+      }
+
+      // Query parameters will be ?search=[term]&type=public
+      return query;
+    }
+  }
+});
+$('#select-project-type').select2({
+  ajax: {
+    url: "<?php echo e(route('select-project-type')); ?>",
+    method:"post",
+    "headers": {
+    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+   },
+    data: function (params) {
+      var query = {
+        search: params.term,
+        type: 'public',
+      }
+
+      // Query parameters will be ?search=[term]&type=public
+      return query;
+    }
+  }
+});
+$('#select-item').select2({
+  ajax: {
+    url: "<?php echo e(route('select-item')); ?>",
+    method:"post",
+    "headers": {
+    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+   },
+    data: function (params) {
+      var query = {
+        search: params.term,
+        type: 'public',
+      }
+
+      // Query parameters will be ?search=[term]&type=public
+      return query;
+    }
+  }
+});
 
 
 

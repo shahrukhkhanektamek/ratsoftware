@@ -163,45 +163,19 @@ class ProjectController extends Controller
         $add_by = $session['id'];
         
         
-
-        
-        $data->name = $request->name;
-        $data->real_price = $request->real_price;
-        $data->sale_price = $request->sale_price;
-        $data->description = $request->description;        
-        $data->sort_description = $request->sort_description;        
-        $data->information = $request->information;        
-        $data->bv = $request->bv;        
+        $data->client_id = $request->client_id;
+        $data->type = $request->type;
+        $data->item = $request->item;
+        $data->length = $request->length;
+        $data->height = $request->height;
         $data->status = $request->status;
         
 
         
-
-        if(empty($id))
-        {
-            $data->display_image = ImageManager::upload($this->arr_values['upload_path'], 'png', $request->file('display_image'));
-            $data->inner_image = ImageManager::upload($this->arr_values['upload_path'], 'png', $request->file('inner_image'));
-        }
-        else
-        {
-            if ($request->display_image)
-                $data->display_image = ImageManager::update($this->arr_values['upload_path'], $data->display_image, 'png', $request->file('display_image'));
-            if ($request->inner_image) 
-                $data->inner_image = ImageManager::update($this->arr_values['upload_path'], $data->inner_image, 'png', $request->file('inner_image'));
-        }
-
-
         $data->add_by = $add_by;
         $data->is_delete = 0;
         if($data->save())
         {
-            $name = $data->name;
-            if(empty($request->slug)) $slug = Helpers::slug($name);
-            else $slug = Helpers::slug($request->slug);
-            $p_id = $data->id;
-            $table_name = $this->arr_values['table_name'];
-            $new_slug = Helpers::insert_slug($slug,$p_id,$table_name,$this->arr_values['page_name']);
-
             $action = 'add';
             if(!empty($id)) $action = 'edit';
             $responseCode = 200;
