@@ -44,44 +44,67 @@
                                 <div class="card">
                                     <div class="card-body frm">
                                         <div class="row">
-                                            <div class="col-lg-4">
+                                            <div class="col-lg-12">
                                                 <label class="form-label" for="product-title-input">Name</label>
                                                 <input type="text" class="form-control" placeholder="Enter Name" name="name" value="<?php echo e(@$row->name); ?>" required>
                                             </div>
-
+                                            <div class="col-lg-12">
+                                                <label class="form-label" for="product-title-input">Slug</label>
+                                                <input type="text" class="form-control" placeholder="Enter Slug" name="slug" value="<?php echo e(@$row->slug); ?>" required>
+                                            </div>
                                             <div class="col-lg-4">
-                                                <label for="formFile" class="form-label">Country</label>
-                                                <select class="form-select mb-3" name="country_id" required id="select-country">
-                                                    <option value="" >Select</option>
-
-                                                    <?php ($country = DB::table("countries")->where(["id"=>@$row->country_id,])->first()); ?>
-
-                                                    <?php if(!empty($country)): ?>
-                                                        <option value="<?php echo e($country->id); ?>" selected ><?php echo e($country->name); ?></option>
-                                                    <?php endif; ?>
-                                                    
-                                                </select>
+                                                <label class="form-label" for="product-title-input">MRP Price</label>
+                                                <input type="number" class="form-control" placeholder="Enter MRP Price" name="real_price" value="<?php echo e(@$row->real_price); ?>" required>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <label class="form-label" for="product-title-input">Sale Price</label>
+                                                <input type="number" class="form-control" placeholder="Enter Sale Price" name="sale_price" value="<?php echo e(@$row->sale_price); ?>" required>
                                             </div>
 
                                             <div class="col-lg-4">
+                                                <label class="form-label" for="product-title-input">BV</label>
+                                                <input type="number" class="form-control" placeholder="Enter BV" name="bv" value="<?php echo e(@$row->bv); ?>" required>
+                                            </div>
+
+                                            <div class="col-lg-12">
+                                                <label class="form-label" for="product-title-input">Description</label>
+                                                <textarea class="form-control" name="sort_description" value="<?php echo e(@$row->sort_description); ?>" ><?php echo e(@$row->sort_description); ?></textarea>
+                                            </div>
+
+                                            <div class="col-lg-12">
+                                                <label class="form-label" for="product-title-input">Detail</label>
+                                                <textarea class="form-control" name="description" value="<?php echo e(@$row->description); ?>" ><?php echo e(@$row->description); ?></textarea>
+                                                <script>CKEDITOR.replace( 'description' );</script>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <label class="form-label" for="product-title-input">Information</label>
+                                                <textarea class="form-control" name="information" value="<?php echo e(@$row->information); ?>" ><?php echo e(@$row->information); ?></textarea>
+                                                <script>CKEDITOR.replace( 'information' );</script>
+                                            </div>
+
+                                            <div class="col-lg-4">
+                                                <label for="formFile" class="form-label">Display Image</label>
+                                                <label>
+                                                    <input class="form-control upload-single-image" type="file" name="display_image" data-target="display_image">
+                                                    <img class="upload-img-view img-thumbnail mt-2 mb-2 display_image" id="viewer" 
+                                                        src="<?php echo e(Helpers::image_check(@$row->display_image)); ?>" alt="banner image"/>
+                                                </label>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <label for="formFile" class="form-label">Inner Image</label>
+                                                <label>
+                                                    <input class="form-control upload-single-image" type="file" name="inner_image" data-target="inner_image">
+                                                    <img class="upload-img-view img-thumbnail mt-2 mb-2 inner_image" id="viewer" 
+                                                        src="<?php echo e(Helpers::image_check(@$row->inner_image)); ?>" alt="banner image"/>
+                                                </label>
+                                            </div>
+                                            <div class="col-lg-4">
                                                 <label for="formFile" class="form-label">Action</label>
-                                                <select class="form-select mb-3" name="status">
+                                                <select class="form-select mb-3" aria-label="Default select example" name="status">
                                                     <option value="1" <?php if(!empty(@$row) && @$row->status==1): ?>selected <?php endif; ?> >Active</option>
                                                     <option value="0" <?php if(!empty(@$row) && @$row->status==0): ?>selected <?php endif; ?> >Inactive</option>
                                                 </select>
                                             </div>
-                                            
-
-                                            <div class="col-lg-12 hide">
-                                                <label for="formFile" class="form-label b-block">Image</label>
-                                                <label class="d-block">
-                                                    <input class="form-control upload-single-image" type="file" name="image" data-target="image">
-                                                </label>
-                                                <div class="col-md-4">                                                    
-                                                    <img class="upload-img-view img-thumbnail mt-2 mb-2 image" id="viewer" src="<?php echo e(Helpers::image_check(@$row->image)); ?>" alt="banner image"/>
-                                                </div>
-                                            </div>
-                                            
                                         </div>
                                         <!-- end card -->
                                         <div class="text-center mt-5 mb-3">
@@ -107,4 +130,4 @@
     <?php echo $__env->make('admin.headers.mainjs', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <!-- End Include Script -->
 </body>
-</html><?php /**PATH C:\xamp\htdocs\projects\ratsoftware\resources\views/admin/state/form.blade.php ENDPATH**/ ?>
+</html><?php /**PATH C:\xamp\htdocs\projects\ratsoftware\resources\views/admin/project/form.blade.php ENDPATH**/ ?>

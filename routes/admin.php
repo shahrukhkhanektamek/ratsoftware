@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ChangePasswordController;
-use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\UserController;
 
 use App\Http\Controllers\Admin\ItemController;
@@ -79,15 +79,15 @@ Route::group(['middleware' => ['admin']], function () {
 
 
 
-    Route::group(['prefix'=>'product', 'as'=>'product.'], function(){
-        Route::get('/', [ProductController::class, 'index'])->name('list');
-        Route::get('load_data', [ProductController::class, 'load_data'])->name('load_data');
-        Route::get('add', [ProductController::class, 'add'])->name('add');
-        Route::get('edit/{id?}', [ProductController::class, 'edit'])->name('edit');
-        Route::post('update', [ProductController::class, 'update'])->name('update');
-        Route::post('delete/{id?}', [ProductController::class, 'delete'])->name('delete');
-        Route::get('excel_import', [ProductController::class, 'excel_import'])->name('excel_import');
-        Route::post('excel_import_action', [ProductController::class, 'excel_import_action'])->name('excel_import_action');
+    Route::group(['prefix'=>'project', 'as'=>'project.'], function(){
+        Route::get('/', [ProjectController::class, 'index'])->name('list');
+        Route::get('load_data', [ProjectController::class, 'load_data'])->name('load_data');
+        Route::get('add', [ProjectController::class, 'add'])->name('add');
+        Route::get('edit/{id?}', [ProjectController::class, 'edit'])->name('edit');
+        Route::post('update', [ProjectController::class, 'update'])->name('update');
+        Route::post('delete/{id?}', [ProjectController::class, 'delete'])->name('delete');
+        Route::get('excel_import', [ProjectController::class, 'excel_import'])->name('excel_import');
+        Route::post('excel_import_action', [ProjectController::class, 'excel_import_action'])->name('excel_import_action');
     });
 
 

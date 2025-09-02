@@ -83,41 +83,6 @@ $(".upload-single-image").on('change', function(){
 
 
 
-var package_id = 0;
-$(document).on("change", "#package_id",(function(e) {      
-    event.preventDefault();
-    package_id = $(this).val();
-    get_package_category();
-}));
-
-function get_package_category()
-{
-      // data_loader("#data-list",1);
-      var form = new FormData();
-      form.append("package_id",package_id);
-      var settings = {
-        "url": "{{route('get-package-category')}}",
-        "method": "POST",
-        "timeout": 0,
-        "processData": false,
-        "headers": {
-          'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-         },
-        "mimeType": "multipart/form-data",
-        "contentType": false,
-        "dataType":"json",
-        "data": form
-      };
-      $.ajax(settings).always(function (response) {
-        // console.log(response);
-        var cat_html = '';
-        $(response.data).each(function(){
-          cat_html = cat_html+`<option value="${this.id}">${this.name}</option>`;
-        });
-        $("#category_id").html(cat_html);
-        $("#category_id").select2();
-      });
-}
 
 
 var path = window.location.href;
@@ -146,10 +111,6 @@ $(document).on("click", "#bigImageModalRotate",(function(e) {
 
 
 
-$(document).on("click", "#addIncome",(function(e) {      
-    event.preventDefault();
-    $("#AddIncomeModal").modal("show");
-}));
 
 function closeModal(modalId)
 {
@@ -167,6 +128,70 @@ navigator.mediaDevices.getUserMedia({ audio: true })
   .catch((error) => {
     console.error("Microphone permission denied!", error);
 });
+
+
+
+$('#select-country').select2({
+  ajax: {
+    url: "{{route('select-country')}}",
+    method:"post",
+    "headers": {
+    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+   },
+    data: function (params) {
+      var query = {
+        search: params.term,
+        type: 'public'
+      }
+
+      // Query parameters will be ?search=[term]&type=public
+      return query;
+    }
+  }
+});
+
+$('#select-state').select2({
+  ajax: {
+    url: "{{route('select-state')}}",
+    method:"post",
+    "headers": {
+    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+   },
+    data: function (params) {
+      var query = {
+        search: params.term,
+        type: 'public',
+        id:$("#select-country").val()
+      }
+
+      // Query parameters will be ?search=[term]&type=public
+      return query;
+    }
+  }
+});
+$('#select-city').select2({
+  ajax: {
+    url: "{{route('select-city')}}",
+    method:"post",
+    "headers": {
+    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+   },
+    data: function (params) {
+      var query = {
+        search: params.term,
+        type: 'public',
+        id:$("#select-state").val()
+      }
+
+      // Query parameters will be ?search=[term]&type=public
+      return query;
+    }
+  }
+});
+
+
+
+
 </script>
 
 @php($segment = request()->segment(2))

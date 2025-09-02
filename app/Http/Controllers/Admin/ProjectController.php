@@ -11,23 +11,23 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Crypt;
 use App\Helper\ImageManager;
-use App\Models\State;
+use App\Models\Project;
 
 use PhpOffice\PhpSpreadsheet\Shared\Date;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
  
-class StateController extends Controller
+class ProjectController extends Controller
 {
      protected $arr_values = array(
-        'routename'=>'state.', 
-        'title'=>'State', 
-        'table_name'=>'states',
-        'page_title'=>'State',
-        "folder_name"=>'/state',
+        'routename'=>'project.', 
+        'title'=>'Project', 
+        'table_name'=>'project',
+        'page_title'=>'Project',
+        "folder_name"=>'/project',
         "upload_path"=>'upload/',
-        "page_name"=>'state-detail.blade.php',
+        "page_name"=>'project-detail.blade.php',
         "keys"=>'id,name',
         "all_image_column_names"=>array("image"),
        );  
@@ -86,9 +86,7 @@ class StateController extends Controller
 
 
 
-      $data_list = State::where([$this->arr_values['table_name'].'.status' => $status])->orderBy($this->arr_values['table_name'].'.id',$order_by);
-      $data_list->leftJoin("countries as countries","countries.id","=",$this->arr_values['table_name'].".country_id");
-      $data_list->select($this->arr_values['table_name'].'.*','countries.name as country_name');
+      $data_list = Project::where(['status' => $status])->orderBy('id',$order_by);
       
       if(!empty($filter_search_value))
       {
@@ -144,7 +142,7 @@ class StateController extends Controller
         $data['pagenation'] = array($this->arr_values['title']);
         $data['trash'] = '';
 
-        $row = State::where(["id"=>$id,])->first();
+        $row = Project::where(["id"=>$id,])->first();
         if(!empty($row))
         {
             return view($this->arr_values['folder_name'].'/form',compact('data','row'));
@@ -158,26 +156,38 @@ class StateController extends Controller
     public function update(Request $request)
     {
         $id = Crypt::decryptString($request->id);
-        if(empty($id)) $data = new State;
-        else $data = State::find($id);
+        if(empty($id)) $data = new Project;
+        else $data = Project::find($id);
 
         $session = Session::get('admin');
         $add_by = $session['id'];
         
         
+
+        
         $data->name = $request->name;
-        $data->country_id = $request->country_id;
+        $data->real_price = $request->real_price;
+        $data->sale_price = $request->sale_price;
+        $data->description = $request->description;        
+        $data->sort_description = $request->sort_description;        
+        $data->information = $request->information;        
+        $data->bv = $request->bv;        
         $data->status = $request->status;
+        
+
         
 
         if(empty($id))
         {
-            $data->image = ImageManager::upload($this->arr_values['upload_path'], 'png', $request->file('image'));
+            $data->display_image = ImageManager::upload($this->arr_values['upload_path'], 'png', $request->file('display_image'));
+            $data->inner_image = ImageManager::upload($this->arr_values['upload_path'], 'png', $request->file('inner_image'));
         }
         else
         {
-            if ($request->image)
-                $data->image = ImageManager::update($this->arr_values['upload_path'], $data->image, 'png', $request->file('image'));
+            if ($request->display_image)
+                $data->display_image = ImageManager::update($this->arr_values['upload_path'], $data->display_image, 'png', $request->file('display_image'));
+            if ($request->inner_image) 
+                $data->inner_image = ImageManager::update($this->arr_values['upload_path'], $data->inner_image, 'png', $request->file('inner_image'));
         }
 
 
@@ -185,6 +195,13 @@ class StateController extends Controller
         $data->is_delete = 0;
         if($data->save())
         {
+            $name = $data->name;
+            if(empty($request->slug)) $slug = Helpers::slug($name);
+            else $slug = Helpers::slug($request->slug);
+            $p_id = $data->id;
+            $table_name = $this->arr_values['table_name'];
+            $new_slug = Helpers::insert_slug($slug,$p_id,$table_name,$this->arr_values['page_name']);
+
             $action = 'add';
             if(!empty($id)) $action = 'edit';
             $responseCode = 200;
@@ -199,7 +216,7 @@ class StateController extends Controller
     public function delete(Request $request, $id)
     {
         $id = Crypt::decryptString($request->id);
-        $data = State::find($id);
+        $data = Project::find($id);
         if($data->delete())
         {
             $responseCode = 200;
@@ -232,7 +249,7 @@ class StateController extends Controller
     public function excel_import_action(Request $request)
     {
 
-        $table_name = 'State_temp';
+        $table_name = 'Project_temp';
         // Validate that a file is uploaded
         $request->validate([
             'file' => 'required|mimes:xlsx,csv,xls',

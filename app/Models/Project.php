@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 
-class Product extends Model
+class Project extends Model
 {
     const CREATED_AT = 'add_date_time';
     const UPDATED_AT = 'update_date_time';
-    protected $table = 'product';    
+    protected $table = 'project';    
 }

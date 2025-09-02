@@ -11,23 +11,23 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Crypt;
 use App\Helper\ImageManager;
-use App\Models\State;
+use App\Models\City;
 
 use PhpOffice\PhpSpreadsheet\Shared\Date;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
  
-class StateController extends Controller
+class CityController extends Controller
 {
      protected $arr_values = array(
-        'routename'=>'state.', 
-        'title'=>'State', 
-        'table_name'=>'states',
-        'page_title'=>'State',
-        "folder_name"=>'/state',
+        'routename'=>'city.', 
+        'title'=>'City', 
+        'table_name'=>'city',
+        'page_title'=>'City',
+        "folder_name"=>'/city',
         "upload_path"=>'upload/',
-        "page_name"=>'state-detail.blade.php',
+        "page_name"=>'city-detail.blade.php',
         "keys"=>'id,name',
         "all_image_column_names"=>array("image"),
        );  
@@ -86,9 +86,10 @@ class StateController extends Controller
 
 
 
-      $data_list = State::where([$this->arr_values['table_name'].'.status' => $status])->orderBy($this->arr_values['table_name'].'.id',$order_by);
+      $data_list = City::where([$this->arr_values['table_name'].'.status' => $status])->orderBy($this->arr_values['table_name'].'.id',$order_by);
       $data_list->leftJoin("countries as countries","countries.id","=",$this->arr_values['table_name'].".country_id");
-      $data_list->select($this->arr_values['table_name'].'.*','countries.name as country_name');
+      $data_list->leftJoin("states as states","states.id","=",$this->arr_values['table_name'].".state_id");
+      $data_list->select($this->arr_values['table_name'].'.*','countries.name as country_name','states.name as state_name');
       
       if(!empty($filter_search_value))
       {
@@ -144,7 +145,7 @@ class StateController extends Controller
         $data['pagenation'] = array($this->arr_values['title']);
         $data['trash'] = '';
 
-        $row = State::where(["id"=>$id,])->first();
+        $row = City::where(["id"=>$id,])->first();
         if(!empty($row))
         {
             return view($this->arr_values['folder_name'].'/form',compact('data','row'));
@@ -158,8 +159,8 @@ class StateController extends Controller
     public function update(Request $request)
     {
         $id = Crypt::decryptString($request->id);
-        if(empty($id)) $data = new State;
-        else $data = State::find($id);
+        if(empty($id)) $data = new City;
+        else $data = City::find($id);
 
         $session = Session::get('admin');
         $add_by = $session['id'];
@@ -199,7 +200,7 @@ class StateController extends Controller
     public function delete(Request $request, $id)
     {
         $id = Crypt::decryptString($request->id);
-        $data = State::find($id);
+        $data = City::find($id);
         if($data->delete())
         {
             $responseCode = 200;
@@ -232,7 +233,7 @@ class StateController extends Controller
     public function excel_import_action(Request $request)
     {
 
-        $table_name = 'State_temp';
+        $table_name = 'City_temp';
         // Validate that a file is uploaded
         $request->validate([
             'file' => 'required|mimes:xlsx,csv,xls',

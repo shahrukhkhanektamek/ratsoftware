@@ -52,13 +52,21 @@
                                                 <label for="formFile" class="form-label">Country</label>
                                                 <select class="form-select mb-3" name="country_id" required id="select-country">
                                                     <option value="" >Select</option>
-
                                                     @php($country = DB::table("countries")->where(["id"=>@$row->country_id,])->first())
-
                                                     @if(!empty($country))
                                                         <option value="{{$country->id}}" selected >{{$country->name}}</option>
-                                                    @endif
-                                                    
+                                                    @endif                                                    
+                                                </select>
+                                            </div>
+
+                                            <div class="col-lg-4">
+                                                <label for="formFile" class="form-label">State</label>
+                                                <select class="form-select mb-3" name="state_id" required id="select-state">
+                                                    <option value="" >Select</option>
+                                                    @php($state = DB::table("countries")->where(["id"=>@$row->state_id,])->first())
+                                                    @if(!empty($state))
+                                                        <option value="{{$state->id}}" selected >{{$state->name}}</option>
+                                                    @endif                                                    
                                                 </select>
                                             </div>
 
